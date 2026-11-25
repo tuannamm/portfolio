@@ -22,5 +22,5 @@ const links = [
       {links.map((l) => <li><a href={`#${l.id}`}>{l.label}</a></li>)}
     </ul>
   </nav>
-  <p class="mt-8 text-center">© {new Date().getFullYear()} {profile.name}. {t('footer.rights')}</p>
+  <p class="mt-8 text-center">© {new Date().getFullYear()} {profile.name[lang]}. {t('footer.rights')}</p>
 </footer>

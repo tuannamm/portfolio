@@ -11,13 +11,12 @@ const t = useTranslations(lang);
 const earliest = Math.min(...experience.map((job) => new Date(`${job.start}-01`).getTime()));
 const years = Math.max(1, Math.floor((Date.now() - earliest) / (365.25 * 24 * 3600 * 1000)));
 const companies = new Set(experience.map((job) => job.company)).size;
-const initials = profile.name.split(' ').map((word) => word[0]).join('').slice(0, 2);
 ---
 <section id="about" class="section" aria-labelledby="about-title">
   <div class="container-page">
     <SectionHeading id="about-title" eyebrow={t('about.eyebrow')} title={t('about.title')} />
     <div class="about-content">
-      <div class="about-picture" aria-hidden="true">{initials}</div>
+      <div class="about-picture" aria-hidden="true">{profile.initials}</div>
       <div class="about-details">
         <div class="facts">
           <Card>

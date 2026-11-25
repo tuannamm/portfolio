@@ -5,18 +5,17 @@ import Button from '../ui/Button.astro';
 interface Props { lang: Lang }
 const { lang } = Astro.props;
 const t = useTranslations(lang);
-const initials = profile.name.split(' ').map((word) => word[0]).join('').slice(0, 2);
 // Set to '/avatar.jpg' after adding your portrait to public/.
 const avatar: string | null = null;
 ---
 <section id="hero" class="section" aria-labelledby="hero-title">
   <div class="container-page hero-content">
     <div class="portrait">
-      {avatar ? <img src={avatar} alt={profile.name} width="400" height="400" /> : <span aria-hidden="true">{initials}</span>}
+      {avatar ? <img src={avatar} alt={profile.name[lang]} width="400" height="400" /> : <span aria-hidden="true">{profile.initials}</span>}
     </div>
     <div class="hero-text">
       <p class="eyebrow font-semibold">{t('hero.greeting')}</p>
-      <h1 id="hero-title" class="title">{profile.name}</h1>
+      <h1 id="hero-title" class="title">{profile.name[lang]}</h1>
       <p class="role">{profile.role[lang]}</p>
       <div class="actions">
         <Button href={profile.cvUrl} variant="outline" download>{t('hero.cta.cv')}</Button>
@@ -40,6 +39,7 @@ const avatar: string | null = null;
   .portrait { width: 400px; height: 400px; flex-shrink: 0; border-radius: 50%; background: var(--c-surface); border: 1px solid var(--c-line); display: grid; place-items: center; overflow: hidden; }
   .portrait span { font-size: 6rem; font-weight: 600; color: var(--c-muted); }
   .portrait img { width: 100%; height: 100%; object-fit: cover; }
+  #hero-title { text-wrap: balance; line-height: 1.35; }
   .hero-text { text-align: center; max-width: 35rem; min-width: 0; }
   .role { font-size: 1.75rem; font-weight: 600; margin: 0.75rem 0 1rem; }
   .actions, .socials { display: flex; justify-content: center; flex-wrap: wrap; gap: 1rem; }

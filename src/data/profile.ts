@@ -1,7 +1,8 @@
 import type { Profile } from './types';
 
 export const profile: Profile = {
-  name: 'Alex Nguyen',
+  name: { en: 'Nguyen Tran Tuan Nam', vi: 'Nguyễn Trần Tuấn Nam' },
+  initials: 'TN',
   role: { en: 'Full-stack Software Engineer', vi: 'Kỹ sư phần mềm Full-stack' },
   tagline: {
     en: 'I build fast, reliable web products — from polished interfaces to scalable APIs.',

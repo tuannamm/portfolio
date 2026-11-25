@@ -2,7 +2,8 @@ export type Localized = { en: string; vi: string };
 export type Lang = keyof Localized;
 
 export interface Profile {
-  name: string;
+  name: Localized;
+  initials: string;
   role: Localized;
   tagline: Localized;
   about: Localized[]; // paragraphs
