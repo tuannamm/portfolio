@@ -1,0 +1,36 @@
+---
+import { useTranslations, type Lang } from '../../i18n/ui';
+import { projects } from '../../data/projects';
+import SectionHeading from '../ui/SectionHeading.astro';
+import Card from '../ui/Card.astro';
+import Tag from '../ui/Tag.astro';
+import Button from '../ui/Button.astro';
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<section id="projects" class="section bg-surface/50" aria-labelledby="projects-title">
+  <div class="container-page">
+    <SectionHeading id="projects-title" title={t('projects.title')} subtitle={t('projects.subtitle')} />
+    <ul class="grid gap-6 md:grid-cols-2">
+      {projects.map((p) => (
+        <Card as="li" class="flex flex-col overflow-hidden !p-0">
+          <img src={p.image} alt="" width="640" height="360" loading="lazy" class="aspect-video w-full object-cover" />
+          <div class="flex flex-1 flex-col p-6">
+            <h3 class="text-lg font-semibold">{p.title}</h3>
+            <p class="mt-2 text-muted">{p.description[lang]}</p>
+            <ul class="mt-4 flex flex-wrap gap-2">
+              {p.tech.map((x) => <li><Tag>{x}</Tag></li>)}
+            </ul>
+            <div class="mt-5 flex gap-3">
+              {p.github && <Button href={p.github} variant="secondary" external>{t('projects.source')}</Button>}
+              {p.demo && <Button href={p.demo} external>{t('projects.demo')}</Button>}
+            </div>
+          </div>
+        </Card>
+      ))}
+    </ul>
+  </div>
+</section>

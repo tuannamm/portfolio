@@ -1,0 +1,22 @@
+---
+import { useTranslations, type Lang } from '../../i18n/ui';
+import { profile } from '../../data/profile';
+import SectionHeading from '../ui/SectionHeading.astro';
+import Button from '../ui/Button.astro';
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<section id="contact" class="section" aria-labelledby="contact-title">
+  <div class="container-page">
+    <SectionHeading id="contact-title" title={t('contact.title')} subtitle={t('contact.subtitle')} />
+    <p class="max-w-2xl text-lg text-muted">{t('contact.copy')}</p>
+    <div class="mt-6 flex flex-wrap gap-3">
+      <Button href={`mailto:${profile.email}`}>{t('contact.email')}</Button>
+      <Button href={profile.socials.github} variant="secondary" external>{t('contact.github')}</Button>
+      <Button href={profile.socials.linkedin} variant="secondary" external>{t('contact.linkedin')}</Button>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,29 @@
+---
+import { useTranslations, type Lang } from '../../i18n/ui';
+import { posts } from '../../data/posts';
+import { formatDate } from '../../lib/format';
+import SectionHeading from '../ui/SectionHeading.astro';
+import Card from '../ui/Card.astro';
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<section id="blog" class="section bg-surface/50" aria-labelledby="blog-title">
+  <div class="container-page">
+    <SectionHeading id="blog-title" title={t('blog.title')} subtitle={t('blog.subtitle')} />
+    <ul class="grid gap-6 md:grid-cols-3">
+      {posts.map((p) => (
+        <Card as="li">
+          <p class="text-sm text-muted">
+            <time datetime={p.date}>{formatDate(p.date, lang)}</time> · {p.readMinutes} {t('blog.minRead')}
+          </p>
+          <h3 class="mt-2 font-semibold">{p.title[lang]}</h3>
+          <p class="mt-2 text-muted">{p.excerpt[lang]}</p>
+          <a href={p.url} target="_blank" rel="noopener noreferrer" class="mt-4 inline-block text-sm font-medium text-accent hover:underline">{t('blog.readMore')} →</a>
+        </Card>
+      ))}
+    </ul>
+  </div>
+</section>

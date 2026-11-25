@@ -1,0 +1,27 @@
+---
+import { useTranslations, type Lang, type UIKey } from '../../i18n/ui';
+import { skills } from '../../data/skills';
+import SectionHeading from '../ui/SectionHeading.astro';
+import Card from '../ui/Card.astro';
+import Tag from '../ui/Tag.astro';
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<section id="skills" class="section bg-surface/50" aria-labelledby="skills-title">
+  <div class="container-page">
+    <SectionHeading id="skills-title" title={t('skills.title')} subtitle={t('skills.subtitle')} />
+    <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      {skills.map((g) => (
+        <Card>
+          <h3 class="mb-3 font-semibold">{t(`skills.${g.id}` as UIKey)}</h3>
+          <ul class="flex flex-wrap gap-2">
+            {g.items.map((s) => <li><Tag>{s}</Tag></li>)}
+          </ul>
+        </Card>
+      ))}
+    </div>
+  </div>
+</section>

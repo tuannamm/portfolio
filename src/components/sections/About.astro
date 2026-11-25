@@ -1,0 +1,19 @@
+---
+import { useTranslations, type Lang } from '../../i18n/ui';
+import { profile } from '../../data/profile';
+import SectionHeading from '../ui/SectionHeading.astro';
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<section id="about" class="section" aria-labelledby="about-title">
+  <div class="container-page">
+    <SectionHeading id="about-title" title={t('about.title')} subtitle={t('about.subtitle')} />
+    <div class="max-w-3xl space-y-4 text-lg leading-relaxed text-muted">
+      {profile.about.map((p) => <p>{p[lang]}</p>)}
+      <p class="text-base"><span class="font-medium text-fg">{t('about.location')}:</span> {profile.location[lang]}</p>
+    </div>
+  </div>
+</section>

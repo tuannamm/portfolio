@@ -1,0 +1,44 @@
+---
+import { useTranslations, type Lang } from '../../i18n/ui';
+import { education, certifications } from '../../data/education';
+import SectionHeading from '../ui/SectionHeading.astro';
+import Card from '../ui/Card.astro';
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<section id="education" class="section" aria-labelledby="education-title">
+  <div class="container-page">
+    <SectionHeading id="education-title" title={t('education.title')} subtitle={t('education.subtitle')} />
+    <div class="grid gap-8 md:grid-cols-2">
+      <div>
+        <h3 class="mb-4 font-semibold">{t('education.education')}</h3>
+        <ul class="space-y-4">
+          {education.map((e) => (
+            <Card as="li">
+              <p class="font-semibold">{e.degree[lang]}</p>
+              <p class="text-muted">{e.school} · {e.start}–{e.end}</p>
+              {e.note && <p class="mt-1 text-sm text-muted">{e.note[lang]}</p>}
+            </Card>
+          ))}
+        </ul>
+      </div>
+      <div>
+        <h3 class="mb-4 font-semibold">{t('education.certifications')}</h3>
+        <ul class="space-y-4">
+          {certifications.map((c) => (
+            <Card as="li">
+              <p class="font-semibold">{c.name}</p>
+              <p class="text-muted">{c.issuer} · {c.year}</p>
+              {c.url && (
+                <a href={c.url} target="_blank" rel="noopener noreferrer" class="mt-1 inline-block text-sm text-accent hover:underline">{t('education.credential')}</a>
+              )}
+            </Card>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>

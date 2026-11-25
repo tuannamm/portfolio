@@ -1,0 +1,37 @@
+---
+import { useTranslations, type Lang } from '../../i18n/ui';
+import { experience } from '../../data/experience';
+import { formatMonth } from '../../lib/format';
+import SectionHeading from '../ui/SectionHeading.astro';
+import Card from '../ui/Card.astro';
+import Tag from '../ui/Tag.astro';
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<section id="experience" class="section" aria-labelledby="experience-title">
+  <div class="container-page">
+    <SectionHeading id="experience-title" title={t('experience.title')} subtitle={t('experience.subtitle')} />
+    <ol class="space-y-6">
+      {experience.map((job) => (
+        <Card as="li">
+          <div class="flex flex-wrap items-baseline justify-between gap-x-4">
+            <h3 class="text-lg font-semibold">{job.role[lang]} · {job.company}</h3>
+            <p class="text-sm text-muted">
+              {formatMonth(job.start, lang)} – {job.end ? formatMonth(job.end, lang) : t('experience.present')}
+            </p>
+          </div>
+          <p class="text-sm text-muted">{job.location[lang]}</p>
+          <ul class="mt-4 list-disc space-y-1.5 pl-5 text-muted">
+            {job.bullets.map((b) => <li>{b[lang]}</li>)}
+          </ul>
+          <ul class="mt-4 flex flex-wrap gap-2">
+            {job.tech.map((x) => <li><Tag>{x}</Tag></li>)}
+          </ul>
+        </Card>
+      ))}
+    </ol>
+  </div>
+</section>
