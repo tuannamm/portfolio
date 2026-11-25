@@ -30,13 +30,15 @@ All content lives in `src/data/` (typed in `types.ts`). Translatable fields use 
 - `src/i18n/ui.ts` holds **all UI strings** for both languages, plus `useTranslations(lang)`, `getLangFromUrl(url)` and `localePath(lang, hash?)`. Add a key to both `en` and `vi` (TypeScript enforces parity).
 - Pages `src/pages/index.astro` and `src/pages/vi/index.astro` both render `src/components/HomePage.astro` with a `lang` prop.
 
-## Theming
+## Theming & style
 
-Light by default, dark via `class="dark"` on `<html>`. Choice is stored in `localStorage` (`theme`), falling back to `prefers-color-scheme`; an inline script in `BaseLayout.astro` applies it before paint. Colors are semantic tokens in `src/styles/global.css` (`bg-bg`, `bg-surface`, `text-fg`, `text-muted`, `border-line`, `bg-accent`, `text-accent`, `bg-accent-soft`) — change the accent in one place (`--c-accent`).
+Style follows the reference site: **Poppins** (300/400/500/600, self-hosted via `@fontsource/poppins`), strictly monochrome. Light is default; dark is a monochrome inversion via `class="dark"` on `<html>` (stored in `localStorage` `theme`, falling back to `prefers-color-scheme`; applied before paint in `BaseLayout.astro`).
+
+Tokens live in `src/styles/global.css` (`bg-bg`, `bg-surface`, `text-fg`, `text-muted`, `border-line`, `bg-accent`/`text-accent` = primary dark, `bg-accent-soft`). Utility classes: `.container-page` (10rem side margin, 5% below 1200px), `.section`, `.eyebrow`, `.title`, `.btn`, `.details-container`, `.color-container`. Custom breakpoint `desk:` / `max-desk:` = 1200px (desktop nav vs hamburger). Motion: 300ms hover transitions only.
 
 ## Component contract
 
 - `src/components/sections/<Name>.astro` — one file per section (Hero, About, Skills, Experience, Projects, Education, Contact, Footer). Each takes `{ lang: 'en' | 'vi' }`, renders a `<section id="...">` (matching the navbar anchors) and reads its data from `src/data/`. Section files should only need their own file to change.
-- `src/components/ui/` — shared primitives: `SectionHeading`, `Button` (`variant`: primary/secondary/ghost, `external`, `download`), `Tag`, `Card` (`as`: div/article/li).
+- `src/components/ui/` — shared primitives: `SectionHeading` (`eyebrow`, `title`, `subtitle?`, `id`), `Button` (`variant`: filled/outline/project, `external`, `download`), `Tag`, `Card` (`variant`: details/color, `as`: div/article/li).
 - `src/lib/format.ts` — `formatMonth` (locale-aware).
 - `Navbar.astro` — sticky nav, theme toggle, EN|VI switcher, mobile menu.

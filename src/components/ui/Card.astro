@@ -1,11 +1,16 @@
 ---
+/**
+ * variant: 'details' (default; white bg, centered) | 'color' (surface bg, project cards)
+ * as: element tag. Extra classes via `class` (e.g. "text-left").
+ */
 interface Props {
   as?: 'div' | 'article' | 'li';
+  variant?: 'details' | 'color';
   class?: string;
 }
-const { as: Tag = 'div', class: className = '' } = Astro.props;
+const { as: Tag = 'div', variant = 'details', class: className = '' } = Astro.props;
 ---
 
-<Tag class:list={['rounded-xl border border-line bg-surface p-6', className]}>
+<Tag class:list={[variant === 'color' ? 'color-container' : 'details-container', className]}>
   <slot />
 </Tag>

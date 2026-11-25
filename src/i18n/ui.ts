@@ -25,6 +25,7 @@ export const ui = {
     'hero.cta.contact': 'Get in touch',
     'hero.cta.cv': 'Download CV',
 
+    'about.eyebrow': 'Get To Know More',
     'about.title': 'About',
     'about.subtitle': 'A little about who I am and how I work.',
     'about.location': 'Based in',
@@ -35,6 +36,7 @@ export const ui = {
     'hero.github': 'GitHub profile',
     'hero.linkedin': 'LinkedIn profile',
 
+    'skills.eyebrow': 'Explore My',
     'skills.title': 'Skills',
     'skills.subtitle': 'Tools and technologies I work with.',
     'skills.languages': 'Languages',
@@ -44,22 +46,26 @@ export const ui = {
     'skills.devops': 'DevOps & Cloud',
     'skills.tools': 'Tools',
 
+    'experience.eyebrow': 'Explore My',
     'experience.title': 'Experience',
     'experience.subtitle': 'Where I have worked and what I have shipped.',
     'experience.present': 'Present',
 
+    'projects.eyebrow': 'Browse My Recent',
     'projects.title': 'Projects',
     'projects.subtitle': 'A selection of things I have built.',
     'projects.source': 'Source',
     'projects.demo': 'Live demo',
     'projects.viewAll': 'View all on GitHub',
 
+    'education.eyebrow': 'My Background',
     'education.title': 'Education & Certifications',
     'education.subtitle': 'Formal education and professional credentials.',
     'education.education': 'Education',
     'education.certifications': 'Certifications',
     'education.credential': 'View credential',
 
+    'contact.eyebrow': 'Get in Touch',
     'contact.title': 'Contact',
     'contact.subtitle': "Let's build something together.",
     'contact.copy':
@@ -70,6 +76,7 @@ export const ui = {
     'contact.github': 'GitHub',
     'contact.linkedin': 'LinkedIn',
 
+    'footer.nav': 'Footer',
     'footer.rights': 'All rights reserved.',
     'footer.built': 'Built with Astro & Tailwind CSS.',
     'footer.backToTop': 'Back to top',
@@ -96,6 +103,7 @@ export const ui = {
     'hero.cta.contact': 'Liên hệ',
     'hero.cta.cv': 'Tải CV',
 
+    'about.eyebrow': 'Tìm hiểu thêm',
     'about.title': 'Giới thiệu',
     'about.subtitle': 'Đôi nét về con người và cách làm việc của tôi.',
     'about.location': 'Hiện sống tại',
@@ -106,6 +114,7 @@ export const ui = {
     'hero.github': 'Trang GitHub',
     'hero.linkedin': 'Trang LinkedIn',
 
+    'skills.eyebrow': 'Khám phá',
     'skills.title': 'Kỹ năng',
     'skills.subtitle': 'Công cụ và công nghệ tôi sử dụng.',
     'skills.languages': 'Ngôn ngữ lập trình',
@@ -115,22 +124,26 @@ export const ui = {
     'skills.devops': 'DevOps & Đám mây',
     'skills.tools': 'Công cụ',
 
+    'experience.eyebrow': 'Khám phá',
     'experience.title': 'Kinh nghiệm',
     'experience.subtitle': 'Nơi tôi đã làm việc và những gì đã triển khai.',
     'experience.present': 'Hiện tại',
 
+    'projects.eyebrow': 'Dự án gần đây',
     'projects.title': 'Dự án',
     'projects.subtitle': 'Một số sản phẩm tôi đã xây dựng.',
     'projects.source': 'Mã nguồn',
     'projects.demo': 'Xem demo',
     'projects.viewAll': 'Xem tất cả trên GitHub',
 
+    'education.eyebrow': 'Nền tảng của tôi',
     'education.title': 'Học vấn & Chứng chỉ',
     'education.subtitle': 'Quá trình học tập và các chứng chỉ chuyên môn.',
     'education.education': 'Học vấn',
     'education.certifications': 'Chứng chỉ',
     'education.credential': 'Xem chứng chỉ',
 
+    'contact.eyebrow': 'Hãy liên hệ',
     'contact.title': 'Liên hệ',
     'contact.subtitle': 'Cùng nhau xây dựng điều gì đó nhé.',
     'contact.copy':
@@ -141,6 +154,7 @@ export const ui = {
     'contact.github': 'GitHub',
     'contact.linkedin': 'LinkedIn',
 
+    'footer.nav': 'Chân trang',
     'footer.rights': 'Bảo lưu mọi quyền.',
     'footer.built': 'Xây dựng với Astro & Tailwind CSS.',
     'footer.backToTop': 'Lên đầu trang',

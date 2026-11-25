@@ -1,25 +1,23 @@
 ---
+/**
+ * variant: 'filled' (default) | 'outline' | 'project'
+ * Legacy aliases still accepted: primary=filled, secondary=outline, ghost=outline.
+ */
 interface Props {
   href: string;
-  variant?: 'primary' | 'secondary' | 'ghost';
+  variant?: 'filled' | 'outline' | 'project' | 'primary' | 'secondary' | 'ghost';
   external?: boolean;
   download?: boolean;
   class?: string;
 }
-const { href, variant = 'primary', external = false, download = false, class: className = '' } = Astro.props;
-
-const base =
-  'inline-flex items-center justify-center gap-2 rounded-lg px-4 py-2.5 text-sm font-semibold transition-colors';
-const variants = {
-  primary: 'bg-accent text-accent-fg hover:opacity-90',
-  secondary: 'border border-line bg-bg text-fg hover:bg-surface',
-  ghost: 'text-accent hover:bg-accent-soft',
-};
+const { href, variant = 'filled', external = false, download = false, class: className = '' } = Astro.props;
+const map = { primary: 'filled', secondary: 'outline', ghost: 'outline' } as const;
+const v = variant in map ? map[variant as keyof typeof map] : (variant as 'filled' | 'outline' | 'project');
 ---
 
 <a
   href={href}
-  class:list={[base, variants[variant], className]}
+  class:list={['btn', `btn-${v}`, className]}
   target={external ? '_blank' : undefined}
   rel={external ? 'noopener noreferrer' : undefined}
   download={download || undefined}
