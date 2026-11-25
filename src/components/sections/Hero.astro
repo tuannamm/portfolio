@@ -15,7 +15,7 @@ const avatar: string | null = null;
       {avatar ? <img src={avatar} alt={profile.name} width="400" height="400" /> : <span aria-hidden="true">{initials}</span>}
     </div>
     <div class="hero-text">
-      <p class="eyebrow">{t('hero.greeting')}</p>
+      <p class="eyebrow font-semibold">{t('hero.greeting')}</p>
       <h1 id="hero-title" class="title">{profile.name}</h1>
       <p class="role">{profile.role[lang]}</p>
       <div class="actions">

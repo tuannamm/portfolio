@@ -18,7 +18,7 @@ const links = [
 
 <footer class="container-page pb-10 pt-8">
   <nav aria-label={t('footer.nav')}>
-    <ul class="flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-xl desk:text-2xl">
+    <ul class="flex flex-col items-center justify-center gap-2 text-base min-[600px]:flex-row min-[600px]:flex-wrap min-[600px]:gap-x-8 min-[600px]:gap-y-3 min-[600px]:text-xl desk:text-2xl">
       {links.map((l) => <li><a href={`#${l.id}`}>{l.label}</a></li>)}
     </ul>
   </nav>

@@ -78,7 +78,7 @@
   .section { padding-top: 4vh; padding-bottom: 4vh; min-height: 96vh; }
 
   /* Heading pattern: centered eyebrow above centered title */
-  .eyebrow { text-align: center; font-weight: 600; font-size: 1rem; color: var(--c-muted); }
+  .eyebrow { text-align: center; font-weight: 400; font-size: 1rem; color: var(--c-muted); }
   .title { text-align: center; font-weight: 600; font-size: 3rem; line-height: 1.2; }
   @media (max-width: 37.5rem) { .title { font-size: 2rem; } }
 
