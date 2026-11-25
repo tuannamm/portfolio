@@ -58,6 +58,9 @@
 }
 
 @layer base {
+  /* Hide the page scrollbar (document only); scrolling still works */
+  html { scrollbar-width: none; }
+  html::-webkit-scrollbar, body::-webkit-scrollbar { display: none; }
   html { scroll-behavior: smooth; scroll-padding-top: 4rem; }
   body { @apply bg-bg font-sans font-normal text-fg antialiased; }
   p { color: var(--c-muted); }
