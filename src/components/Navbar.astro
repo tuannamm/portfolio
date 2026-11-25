@@ -21,18 +21,18 @@ const ctrl =
 ---
 
 <header class="relative z-50 bg-bg">
-  <div class="flex h-[12vh] min-h-16 items-center justify-between gap-2 px-3 desk:mx-[5%] min-[1600px]:mx-[10rem] desk:grid desk:h-28 desk:grid-cols-[1fr_auto_1fr] desk:gap-4 desk:px-0">
-    <a href={localePath(lang)} class="shrink-0 text-xs font-normal text-fg whitespace-nowrap min-[480px]:text-base min-[768px]:text-2xl desk:justify-self-start desk:text-[1.25rem] min-[1440px]:text-[1.375rem] min-[1600px]:text-[1.75rem]">{profile.name[lang]}</a>
+  <div class="flex h-[12vh] min-h-16 items-center justify-between gap-2 px-3 desk:mx-[10rem] desk:h-28 desk:gap-6 min-[1440px]:grid min-[1440px]:grid-cols-[1fr_auto_1fr] min-[1440px]:gap-4 desk:px-0">
+    <a href={localePath(lang)} class="shrink-0 text-xs font-normal text-fg whitespace-nowrap min-[360px]:text-sm min-[480px]:text-base min-[768px]:text-2xl desk:justify-self-start desk:text-[1.125rem] min-[1440px]:text-[1.375rem]">{profile.name[lang]}</a>
 
     <nav aria-label={t('nav.primary')} class="hidden desk:block">
-      <ul class="flex items-center gap-4 text-lg min-[1440px]:gap-8 min-[1440px]:text-xl">
+      <ul class="flex items-center gap-3 text-lg min-[1440px]:gap-4 min-[1440px]:text-xl min-[1600px]:gap-8">
         {links.map((l) => (
           <li><a href={`#${l.id}`} class="text-fg">{l.label}</a></li>
         ))}
       </ul>
     </nav>
 
-    <div class="flex items-center gap-2 desk:justify-self-end">
+    <div class="flex shrink-0 items-center gap-1 min-[480px]:gap-2 desk:justify-self-end">
       <div role="group" aria-label={t('nav.language')} class="flex items-center rounded-full border border-line p-0.5 text-xs font-semibold transition-colors duration-300 hover:border-line-strong">
         {(['en', 'vi'] as Lang[]).map((l) =>
           l === lang ? (
@@ -84,9 +84,10 @@ const ctrl =
   @media (min-width: 75rem) { .hamburger { display: none !important; } }
   .hamburger {
     display: flex; flex-direction: column; justify-content: space-between;
-    height: 24px; width: 30px; margin-left: 0.5rem; cursor: pointer;
+    height: 24px; width: 30px; margin-left: 0; cursor: pointer;
     background: none; border: 0; padding: 0;
   }
+  @media (min-width: 30rem) { .hamburger { margin-left: 0.5rem; } }
   .hamburger span {
     display: block; width: 100%; height: 2px; background: var(--c-fg);
     transition: all 300ms ease-in-out; transform-origin: left center;
