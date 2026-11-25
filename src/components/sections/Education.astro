@@ -2,27 +2,59 @@
 import { useTranslations, type Lang } from '../../i18n/ui';
 import { education, certifications } from '../../data/education';
 import SectionHeading from '../ui/SectionHeading.astro';
-import Reveal from '../home/Reveal.astro';
+import Card from '../ui/Card.astro';
+
 interface Props { lang: Lang }
 const { lang } = Astro.props;
 const t = useTranslations(lang);
 ---
+
 <section id="education" class="section" aria-labelledby="education-title">
   <div class="container-page">
-    <Reveal><SectionHeading id="education-title" title={t('education.title')} subtitle={t('education.subtitle')} /></Reveal>
-    <div class="grid gap-10 md:grid-cols-2 md:gap-12">
-      <Reveal>
-        <h3 class="border-b border-line pb-4 text-sm font-semibold uppercase tracking-wider text-muted">{t('education.education')}</h3>
-        <ul class="divide-y divide-line" role="list">
-          {education.map((e) => <li class="py-5"><p class="font-semibold">{e.degree[lang]}</p><p class="mt-1 text-sm text-muted">{e.school} · {e.start}–{e.end}</p>{e.note && <p class="mt-2 text-sm leading-relaxed text-muted">{e.note[lang]}</p>}</li>)}
+    <SectionHeading id="education-title" eyebrow={t('education.eyebrow')} title={t('education.title')} />
+    <div class="grid gap-8 md:grid-cols-2">
+      <Card variant="details" class="flex flex-col items-center">
+        <svg viewBox="0 0 24 24" class="icon mb-3 text-fg" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
+          <path d="M6 12v5c0 2 3 3 6 3s6-1 6-3v-5" />
+        </svg>
+        <h3 class="mb-4 text-xl font-semibold text-fg">{t('education.education')}</h3>
+        <ul class="w-full divide-y divide-line" role="list">
+          {education.map((e) => (
+            <li class="py-4 first:pt-0 last:pb-0">
+              <p class="font-semibold text-fg">{e.degree[lang]}</p>
+              <p class="mt-1 text-sm text-muted">{e.school} · {e.start}–{e.end}</p>
+              {e.note && <p class="mt-2 text-sm leading-relaxed text-muted">{e.note[lang]}</p>}
+            </li>
+          ))}
         </ul>
-      </Reveal>
-      <Reveal delay={100}>
-        <h3 class="border-b border-line pb-4 text-sm font-semibold uppercase tracking-wider text-muted">{t('education.certifications')}</h3>
-        <ul class="divide-y divide-line" role="list">
-          {certifications.map((c) => <li class="py-5"><p class="font-semibold">{c.name}</p><p class="mt-1 text-sm text-muted">{c.issuer} · {c.year}</p>{c.url && <a href={c.url} target="_blank" rel="noopener noreferrer" class="mt-2 inline-block text-sm font-medium text-accent hover:underline">{t('education.credential')} <span aria-hidden="true">↗</span></a>}</li>)}
+      </Card>
+
+      <Card variant="details" class="flex flex-col items-center">
+        <svg viewBox="0 0 24 24" class="icon mb-3 text-fg" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="8" r="6" />
+          <path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11" />
+        </svg>
+        <h3 class="mb-4 text-xl font-semibold text-fg">{t('education.certifications')}</h3>
+        <ul class="w-full divide-y divide-line" role="list">
+          {certifications.map((c) => (
+            <li class="py-4 first:pt-0 last:pb-0">
+              <p class="font-semibold text-fg">{c.name}</p>
+              <p class="mt-1 text-sm text-muted">{c.issuer} · {c.year}</p>
+              {c.url && (
+                <a
+                  href={c.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="mt-2 inline-block text-sm font-semibold text-fg [text-underline-offset:0.35rem]"
+                >
+                  {t('education.credential')} <span aria-hidden="true">↗</span>
+                </a>
+              )}
+            </li>
+          ))}
         </ul>
-      </Reveal>
+      </Card>
     </div>
   </div>
 </section>
