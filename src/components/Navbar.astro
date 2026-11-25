@@ -21,18 +21,18 @@ const ctrl =
 ---
 
 <header class="relative z-50 bg-bg">
-  <div class="flex h-[12vh] min-h-16 items-center justify-around gap-4 px-4 desk:h-[17vh] desk:gap-8 desk:px-0">
-    <a href={localePath(lang)} class="text-2xl font-normal text-fg desk:text-[2rem]">{profile.name}</a>
+  <div class="flex h-[12vh] min-h-16 items-center justify-around gap-4 px-4 desk:mx-[10rem] desk:grid desk:h-28 desk:grid-cols-[1fr_auto_1fr] desk:gap-4 desk:px-0">
+    <a href={localePath(lang)} class="text-2xl font-normal text-fg whitespace-nowrap desk:justify-self-start desk:text-[1.5rem] min-[1440px]:text-[1.75rem]">{profile.name}</a>
 
-    <nav aria-label={t('nav.primary')} class="hidden grow desk:block">
-      <ul class="flex items-center justify-around gap-8 text-2xl">
+    <nav aria-label={t('nav.primary')} class="hidden desk:block">
+      <ul class="flex items-center gap-4 text-lg min-[1440px]:gap-8 min-[1440px]:text-xl">
         {links.map((l) => (
           <li><a href={`#${l.id}`} class="text-fg">{l.label}</a></li>
         ))}
       </ul>
     </nav>
 
-    <div class="flex items-center gap-2">
+    <div class="flex items-center gap-2 desk:justify-self-end">
       <div role="group" aria-label={t('nav.language')} class="flex items-center rounded-full border border-line p-0.5 text-xs font-semibold">
         {(['en', 'vi'] as Lang[]).map((l) =>
           l === lang ? (
