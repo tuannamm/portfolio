@@ -74,8 +74,10 @@
   .container-page { margin-inline: 5%; }
   @media (min-width: 75rem) { .container-page { margin-inline: 10rem; } }
 
-  /* Roughly full-viewport sections with 4vh top padding */
-  .section { padding-top: 4vh; padding-bottom: 4vh; min-height: 96vh; }
+  /* Content-sized sections with consistent vertical rhythm: 3rem mobile / 4rem tablet / 5rem desktop */
+  .section { padding-block: 3rem; }
+  @media (min-width: 40rem) { .section { padding-block: 4rem; } }
+  @media (min-width: 75rem) { .section { padding-block: 5rem; } }
 
   /* Heading pattern: centered eyebrow above centered title */
   .eyebrow { text-align: center; font-weight: 400; font-size: 1rem; color: var(--c-muted); }

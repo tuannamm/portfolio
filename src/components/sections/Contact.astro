@@ -8,7 +8,7 @@ const { lang } = Astro.props;
 const t = useTranslations(lang);
 ---
 
-<section id="contact" class="section flex min-h-[70vh] flex-col justify-center" aria-labelledby="contact-title">
+<section id="contact" class="section" aria-labelledby="contact-title">
   <div class="container-page">
     <SectionHeading id="contact-title" eyebrow={t('contact.eyebrow')} title={t('contact.title')} />
     <div class="mx-auto my-8 flex w-fit max-w-full flex-wrap items-center justify-center rounded-[2rem] border-[0.1rem] border-line bg-bg p-2">
