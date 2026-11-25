@@ -4,7 +4,6 @@ export const defaultLang: Lang = 'en';
 
 export const ui = {
   en: {
-    'meta.title': 'Alex Nguyen — Software Engineer',
     'meta.skip': 'Skip to content',
 
     'nav.about': 'About',
@@ -77,7 +76,6 @@ export const ui = {
     'footer.backToTop': 'Back to top',
   },
   vi: {
-    'meta.title': 'Alex Nguyen — Kỹ sư phần mềm',
     'meta.skip': 'Bỏ qua đến nội dung',
 
     'nav.about': 'Giới thiệu',

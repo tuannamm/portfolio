@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
 import { useTranslations, type Lang } from '../i18n/ui';
+import { profile } from '../data/profile';
 
 interface Props {
   lang: Lang;
@@ -16,7 +17,7 @@ const t = useTranslations(lang);
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <title>{title ?? t('meta.title')}</title>
+    <title>{title ?? `${profile.name} — ${profile.role[lang]}`}</title>
     <!-- Set theme before first paint to avoid a flash. -->
     <script is:inline>
       (function () {

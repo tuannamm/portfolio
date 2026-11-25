@@ -1,11 +1,13 @@
 ---
 import { useTranslations, localePath, type Lang } from '../i18n/ui';
+import { profile } from '../data/profile';
 
 interface Props {
   lang: Lang;
 }
 const { lang } = Astro.props;
 const t = useTranslations(lang);
+const brand = profile.name.split(' ')[0];
 
 const links = [
   { id: 'about', label: t('nav.about') },
@@ -23,7 +25,7 @@ const linkClass =
 <header class="sticky top-0 z-50 border-b border-line bg-bg/85 backdrop-blur">
   <div class="container-page flex h-16 items-center justify-between gap-4">
     <a href={localePath(lang)} class="text-lg font-bold tracking-tight">
-      Alex<span class="text-accent">.</span>
+      {brand}<span class="text-accent">.</span>
     </a>
 
     <nav aria-label={t('nav.primary')} class="hidden lg:block">
