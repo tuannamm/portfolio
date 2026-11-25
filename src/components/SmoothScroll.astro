@@ -1,0 +1,103 @@
+<script>
+  import Lenis from 'lenis';
+
+  const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  let lenis: Lenis | undefined;
+  let frame = 0;
+
+  function configureMotion() {
+    cancelAnimationFrame(frame);
+    lenis?.destroy();
+    lenis = undefined;
+    if (motion.matches) return;
+
+    lenis = new Lenis({
+      lerp: 0.1,
+      smoothWheel: true,
+      syncTouch: false,
+      anchors: false,
+      // The dropdown remains natively scrollable; never lock the document.
+      prevent: (node) => node.id === 'mobile-menu',
+    });
+    function raf(time: number) {
+      lenis?.raf(time);
+      frame = requestAnimationFrame(raf);
+    }
+    frame = requestAnimationFrame(raf);
+  }
+
+  function hashTarget(hash: string): HTMLElement | null {
+    if (!hash || hash === '#') return document.body;
+    try { return document.getElementById(decodeURIComponent(hash.slice(1))); }
+    catch { return null; }
+  }
+
+  function focusTarget(target: HTMLElement) {
+    // Preserve native anchor/skip-link keyboard behavior after a scripted scroll.
+    const temporaryTabindex = !target.hasAttribute('tabindex') && target.tabIndex < 0;
+    if (temporaryTabindex) target.setAttribute('tabindex', '-1');
+    target.focus({ preventScroll: true });
+    if (temporaryTabindex) target.addEventListener('blur', () => target.removeAttribute('tabindex'), { once: true });
+  }
+
+  function scrollToTarget(target: HTMLElement, immediate = false, focus = false) {
+    if (lenis) {
+      const padding = parseFloat(getComputedStyle(document.documentElement).scrollPaddingTop) || 0;
+      const margin = parseFloat(getComputedStyle(target).scrollMarginTop) || 0;
+      lenis.resize();
+      lenis.scrollTo(target === document.body ? 0 : target, {
+        offset: target === document.body ? 0 : -(padding + margin),
+        immediate,
+        onComplete: () => { if (focus) focusTarget(target); },
+      });
+    } else {
+      target.scrollIntoView({ behavior: 'instant', block: 'start' });
+      if (focus) focusTarget(target);
+    }
+  }
+
+  // Bubble after Navbar's own listeners so mobile links still close the menu.
+  document.addEventListener('click', (event) => {
+    if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+    const link = event.target instanceof Element ? event.target.closest<HTMLAnchorElement>('a[href]') : null;
+    if (!link || link.hasAttribute('download') || (link.target && link.target !== '_self')) return;
+    const url = new URL(link.href, location.href);
+    if (url.origin !== location.origin || url.pathname !== location.pathname || url.search !== location.search) return;
+    // Leave language navigation and links without a fragment to the browser.
+    if (!url.hash && !link.getAttribute('href')?.endsWith('#')) return;
+    const target = hashTarget(url.hash);
+    if (!target) return;
+    event.preventDefault();
+    if (url.hash !== location.hash) history.pushState(null, '', url.pathname + url.search + (url.hash || '#'));
+    scrollToTarget(target, false, true);
+  });
+
+  function restoreHash() {
+    if (!location.hash) return;
+    const target = hashTarget(location.hash);
+    if (target) scrollToTarget(target, true);
+  }
+
+  configureMotion();
+  motion.addEventListener('change', configureMotion);
+  // Align direct hash loads and language switches after fonts/images settle.
+  if (document.readyState === 'complete') restoreHash();
+  else window.addEventListener('load', restoreHash, { once: true });
+  window.addEventListener('hashchange', restoreHash);
+</script>
+
+<style is:global>
+  html.lenis,
+  html.lenis body { height: auto; }
+  html.lenis-smooth { scroll-behavior: auto !important; }
+  .lenis:not(.lenis-autoToggle).lenis-stopped { overflow: clip; }
+  .lenis [data-lenis-prevent],
+  .lenis [data-lenis-prevent-wheel],
+  .lenis [data-lenis-prevent-touch],
+  .lenis [data-lenis-prevent-vertical],
+  .lenis [data-lenis-prevent-horizontal] { overscroll-behavior: contain; }
+  .lenis.lenis-smooth iframe { pointer-events: none; }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto !important; }
+  }
+</style>

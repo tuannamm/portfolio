@@ -46,3 +46,5 @@ Tokens live in `src/styles/global.css` (`bg-bg`, `bg-surface`, `text-fg`, `text-
 ## Skill logos
 
 Skills use selected [Simple Icons](https://simpleicons.org/) SVG paths (CC0-1.0), inlined at build time. AWS and Playwright use [Devicon](https://github.com/devicons/devicon) artwork from `@iconify-json/devicon` (MIT), converted to monochrome; hover colors use AWS orange and Playwright green. SQL, REST, and unknown skill names use neutral database/API glyphs. No icon packages or requests run in the browser. Logos inherit the foreground color by default and use official brand colors on hover; colors with less than 3:1 contrast against the dark background retain the foreground color in dark mode. Edit the name-to-logo mapping in `src/data/skills.ts` when adding technologies.
+
+Smooth wheel scrolling uses MIT-licensed Lenis in `SmoothScroll.astro`; touch stays native, anchor hashes are preserved, and reduced motion bypasses Lenis for instant native navigation.
