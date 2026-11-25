@@ -36,7 +36,7 @@ const ctrl =
       <div role="group" aria-label={t('nav.language')} class="flex items-center rounded-full border border-line p-0.5 text-xs font-semibold transition-colors duration-300 hover:border-line-strong">
         {(['en', 'vi'] as Lang[]).map((l) =>
           l === lang ? (
-            <span aria-current="true" class="rounded-full bg-accent px-1.5 py-1.5 min-[360px]:px-2 min-[480px]:px-3 text-accent-fg">{l.toUpperCase()}</span>
+            <span aria-current="true" style="view-transition-name: lang-pill" class="rounded-full bg-accent px-1.5 py-1.5 min-[360px]:px-2 min-[480px]:px-3 text-accent-fg">{l.toUpperCase()}</span>
           ) : (
             <a
               href={localePath(l)}
@@ -125,10 +125,36 @@ const ctrl =
   });
   window.matchMedia('(min-width: 75rem)').addEventListener('change', (e) => e.matches && setMenu(false));
 
-  // Language switcher keeps the current section
+  // Language switcher keeps the exact section-relative reading position
+  const LANG_SWITCH_KEY = 'lang-switch-pos';
   document.querySelectorAll<HTMLAnchorElement>('[data-lang-switch]').forEach((a) => {
     a.addEventListener('click', () => {
-      if (location.hash) a.href = a.getAttribute('href') + location.hash;
+      const sections = Array.from(document.querySelectorAll<HTMLElement>('main section[id]'));
+      const threshold = window.innerHeight * 0.3;
+      let active = sections[0];
+      for (const s of sections) {
+        if (s.getBoundingClientRect().top <= threshold) active = s;
+        else break;
+      }
+      if (active) {
+        const rawFraction =
+          active.id === 'hero' && window.scrollY <= active.offsetTop
+            ? 0
+            : (window.scrollY - active.offsetTop) / Math.max(1, active.offsetHeight);
+        const fraction = Math.min(1, Math.max(0, rawFraction));
+        const targetLang = a.getAttribute('lang') || '';
+        try {
+          sessionStorage.setItem(
+            LANG_SWITCH_KEY,
+            JSON.stringify({ id: active.id, fraction, lang: targetLang })
+          );
+        } catch {}
+        const base = (a.getAttribute('href') || '/').split('#')[0];
+        const hash = active.id !== 'hero' ? `#${active.id}` : location.hash;
+        a.href = base + hash;
+      } else if (location.hash) {
+        a.href = (a.getAttribute('href') || '/').split('#')[0] + location.hash;
+      }
     });
   });
 </script>
