@@ -3,34 +3,33 @@ import { useTranslations, type Lang } from '../../i18n/ui';
 import { experience } from '../../data/experience';
 import { formatMonth } from '../../lib/format';
 import SectionHeading from '../ui/SectionHeading.astro';
-import Card from '../ui/Card.astro';
 import Tag from '../ui/Tag.astro';
-
+import Reveal from '../home/Reveal.astro';
 interface Props { lang: Lang }
 const { lang } = Astro.props;
 const t = useTranslations(lang);
 ---
-
 <section id="experience" class="section" aria-labelledby="experience-title">
   <div class="container-page">
-    <SectionHeading id="experience-title" title={t('experience.title')} subtitle={t('experience.subtitle')} />
-    <ol class="space-y-6">
-      {experience.map((job) => (
-        <Card as="li">
-          <div class="flex flex-wrap items-baseline justify-between gap-x-4">
-            <h3 class="text-lg font-semibold">{job.role[lang]} · {job.company}</h3>
-            <p class="text-sm text-muted">
-              {formatMonth(job.start, lang)} – {job.end ? formatMonth(job.end, lang) : t('experience.present')}
-            </p>
-          </div>
-          <p class="text-sm text-muted">{job.location[lang]}</p>
-          <ul class="mt-4 list-disc space-y-1.5 pl-5 text-muted">
-            {job.bullets.map((b) => <li>{b[lang]}</li>)}
-          </ul>
-          <ul class="mt-4 flex flex-wrap gap-2">
-            {job.tech.map((x) => <li><Tag>{x}</Tag></li>)}
-          </ul>
-        </Card>
+    <Reveal><SectionHeading id="experience-title" title={t('experience.title')} subtitle={t('experience.subtitle')} /></Reveal>
+    <ol class="ml-2 border-l border-line">
+      {experience.map((job, i) => (
+        <li class="relative pl-7 pb-10 last:pb-0 sm:pl-10">
+          <span aria-hidden="true" class="absolute -left-[5px] top-2 h-[9px] w-[9px] rounded-full bg-accent ring-4 ring-bg"></span>
+          <Reveal delay={i * 70}>
+            <div class="flex flex-wrap items-start justify-between gap-x-6 gap-y-2">
+              <div>
+                <h3 class="text-xl font-semibold tracking-tight">{job.role[lang]}</h3>
+                <p class="mt-1 font-medium text-accent">{job.company} <span class="font-normal text-muted">· {job.location[lang]}</span></p>
+              </div>
+              <p class="text-sm font-medium text-muted"><time datetime={job.start}>{formatMonth(job.start, lang)}</time> – {job.end ? <time datetime={job.end}>{formatMonth(job.end, lang)}</time> : t('experience.present')}</p>
+            </div>
+            <ul class="mt-4 max-w-3xl list-disc space-y-2 pl-5 leading-relaxed text-muted">
+              {job.bullets.map((b) => <li>{b[lang]}</li>)}
+            </ul>
+            <ul class="mt-5 flex flex-wrap gap-2" role="list">{job.tech.map((x) => <li><Tag>{x}</Tag></li>)}</ul>
+          </Reveal>
+        </li>
       ))}
     </ol>
   </div>

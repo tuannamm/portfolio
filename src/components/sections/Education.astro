@@ -2,43 +2,27 @@
 import { useTranslations, type Lang } from '../../i18n/ui';
 import { education, certifications } from '../../data/education';
 import SectionHeading from '../ui/SectionHeading.astro';
-import Card from '../ui/Card.astro';
-
+import Reveal from '../home/Reveal.astro';
 interface Props { lang: Lang }
 const { lang } = Astro.props;
 const t = useTranslations(lang);
 ---
-
 <section id="education" class="section" aria-labelledby="education-title">
   <div class="container-page">
-    <SectionHeading id="education-title" title={t('education.title')} subtitle={t('education.subtitle')} />
-    <div class="grid gap-8 md:grid-cols-2">
-      <div>
-        <h3 class="mb-4 font-semibold">{t('education.education')}</h3>
-        <ul class="space-y-4">
-          {education.map((e) => (
-            <Card as="li">
-              <p class="font-semibold">{e.degree[lang]}</p>
-              <p class="text-muted">{e.school} · {e.start}–{e.end}</p>
-              {e.note && <p class="mt-1 text-sm text-muted">{e.note[lang]}</p>}
-            </Card>
-          ))}
+    <Reveal><SectionHeading id="education-title" title={t('education.title')} subtitle={t('education.subtitle')} /></Reveal>
+    <div class="grid gap-10 md:grid-cols-2 md:gap-12">
+      <Reveal>
+        <h3 class="border-b border-line pb-4 text-sm font-semibold uppercase tracking-wider text-muted">{t('education.education')}</h3>
+        <ul class="divide-y divide-line" role="list">
+          {education.map((e) => <li class="py-5"><p class="font-semibold">{e.degree[lang]}</p><p class="mt-1 text-sm text-muted">{e.school} · {e.start}–{e.end}</p>{e.note && <p class="mt-2 text-sm leading-relaxed text-muted">{e.note[lang]}</p>}</li>)}
         </ul>
-      </div>
-      <div>
-        <h3 class="mb-4 font-semibold">{t('education.certifications')}</h3>
-        <ul class="space-y-4">
-          {certifications.map((c) => (
-            <Card as="li">
-              <p class="font-semibold">{c.name}</p>
-              <p class="text-muted">{c.issuer} · {c.year}</p>
-              {c.url && (
-                <a href={c.url} target="_blank" rel="noopener noreferrer" class="mt-1 inline-block text-sm text-accent hover:underline">{t('education.credential')}</a>
-              )}
-            </Card>
-          ))}
+      </Reveal>
+      <Reveal delay={100}>
+        <h3 class="border-b border-line pb-4 text-sm font-semibold uppercase tracking-wider text-muted">{t('education.certifications')}</h3>
+        <ul class="divide-y divide-line" role="list">
+          {certifications.map((c) => <li class="py-5"><p class="font-semibold">{c.name}</p><p class="mt-1 text-sm text-muted">{c.issuer} · {c.year}</p>{c.url && <a href={c.url} target="_blank" rel="noopener noreferrer" class="mt-2 inline-block text-sm font-medium text-accent hover:underline">{t('education.credential')} <span aria-hidden="true">↗</span></a>}</li>)}
         </ul>
-      </div>
+      </Reveal>
     </div>
   </div>
 </section>
