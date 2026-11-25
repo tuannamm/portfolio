@@ -11,7 +11,7 @@ const t = useTranslations(lang);
   <div class="container-page">
     <SectionHeading id="skills-title" eyebrow={t('skills.eyebrow')} title={t('skills.title')} />
     <div class="skill-groups">
-      {skills.map((group) => <Card as="article">
+      {skills.map((group) => <Card as="article" class="hover:border-line-strong">
         <h3 class="experience-sub-title">{t(`skills.${group.id}` as UIKey)}</h3>
         <ul class="skill-items" role="list">
           {group.items.map((skill) => {

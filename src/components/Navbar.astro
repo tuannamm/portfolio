@@ -17,7 +17,7 @@ const links = [
   { id: 'contact', label: t('nav.contact') },
 ];
 const ctrl =
-  'inline-flex h-10 items-center justify-center rounded-full border border-line text-fg transition-all duration-300 hover:border-fg';
+  'inline-flex h-10 items-center justify-center rounded-full border border-line text-fg transition-all duration-300 hover:border-line-strong';
 ---
 
 <header class="relative z-50 bg-bg">
@@ -33,7 +33,7 @@ const ctrl =
     </nav>
 
     <div class="flex items-center gap-2 desk:justify-self-end">
-      <div role="group" aria-label={t('nav.language')} class="flex items-center rounded-full border border-line p-0.5 text-xs font-semibold">
+      <div role="group" aria-label={t('nav.language')} class="flex items-center rounded-full border border-line p-0.5 text-xs font-semibold transition-colors duration-300 hover:border-line-strong">
         {(['en', 'vi'] as Lang[]).map((l) =>
           l === lang ? (
             <span aria-current="true" class="rounded-full bg-accent px-3 py-1.5 text-accent-fg">{l.toUpperCase()}</span>

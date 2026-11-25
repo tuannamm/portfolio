@@ -10,14 +10,15 @@
 /*
  * Monochrome design tokens (light default + dark inversion).
  * Utilities: bg-bg, bg-surface, text-fg, text-muted, border-line,
- * bg-accent / text-accent (= primary dark), bg-accent-soft.
+ * border-line-strong, bg-accent / text-accent (= primary dark), bg-accent-soft.
  */
 :root {
   --c-bg: rgb(255, 255, 255);
   --c-surface: rgb(250, 250, 250);   /* project "color-container" */
   --c-fg: rgb(0, 0, 0);              /* headings, links, text */
   --c-muted: rgb(85, 85, 85);        /* paragraphs */
-  --c-line: rgb(163, 163, 163);      /* card / container border */
+  --c-line: #cfcfcf;                 /* card / container border */
+  --c-line-strong: #9a9a9a;          /* project button / hover border */
   --c-underline: rgb(181, 181, 181); /* link hover underline */
   --c-hover: rgb(128, 128, 128);     /* link hover text (grey) */
   --c-accent: rgb(53, 53, 53);       /* primary dark (buttons / borders) */
@@ -31,7 +32,8 @@
   --c-surface: rgb(24, 24, 24);
   --c-fg: rgb(255, 255, 255);
   --c-muted: rgb(170, 170, 170);
-  --c-line: rgb(85, 85, 85);
+  --c-line: #3d3d3d;
+  --c-line-strong: #6e6e6e;
   --c-underline: rgb(120, 120, 120);
   --c-hover: rgb(160, 160, 160);
   --c-accent: rgb(255, 255, 255);
@@ -49,6 +51,7 @@
   --color-fg: var(--c-fg);
   --color-muted: var(--c-muted);
   --color-line: var(--c-line);
+  --color-line-strong: var(--c-line-strong);
   --color-accent: var(--c-accent);
   --color-accent-fg: var(--c-accent-fg);
   --color-accent-soft: var(--c-accent-soft);
@@ -88,25 +91,33 @@
   .btn {
     display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
     min-width: 8rem; padding: 1rem; border-radius: 2rem;
-    border: 0.1rem solid var(--c-accent);
+    border: 1px solid var(--c-accent);
     font-weight: 600; font-size: 1rem; line-height: 1.2; text-align: center; cursor: pointer;
     transition: all 300ms ease;
   }
-  .btn-filled { background: var(--c-accent); color: var(--c-accent-fg); }
+  .btn-filled { background: var(--c-accent); color: var(--c-accent-fg); border-color: var(--c-accent); }
   .btn-filled:hover { background: var(--c-accent-hover); border-color: var(--c-accent-hover); }
-  .btn-outline { background: transparent; color: var(--c-fg); }
+  .btn-outline { background: transparent; color: var(--c-fg); border-color: var(--c-accent); }
   .btn-outline:hover { background: var(--c-accent); color: var(--c-accent-fg); }
-  .btn-project { background: transparent; color: var(--c-fg); border-color: var(--c-line); }
+  .btn-project { background: transparent; color: var(--c-fg); border-color: var(--c-line-strong); }
   .btn-project:hover { background: var(--c-accent); color: var(--c-accent-fg); border-color: var(--c-accent); }
 
   /* Cards */
   .details-container {
     padding: 1.5rem; background: var(--c-bg); border-radius: 2rem;
-    border: 0.1rem solid var(--c-line); text-align: center;
+    border: 1px solid var(--c-line); text-align: center;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, .05);
+    transition: border-color 300ms ease;
   }
   .color-container {
     padding: 1.5rem; background: var(--c-surface); border-radius: 2rem;
-    border: 0.1rem solid var(--c-line); text-align: center;
+    border: 1px solid var(--c-line); text-align: center;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, .05);
+    transition: border-color 300ms ease;
+  }
+  .dark .details-container,
+  .dark .color-container {
+    box-shadow: none;
   }
   .icon { height: 2rem; width: 2rem; }
 }

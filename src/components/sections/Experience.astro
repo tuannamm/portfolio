@@ -16,13 +16,13 @@ const t = useTranslations(lang);
     <SectionHeading id="experience-title" eyebrow={t('experience.eyebrow')} title={t('experience.title')} />
     <!-- Vertical timeline: line + dots on the left, newest job first (data order). -->
     <ol
-      class="relative space-y-8 pl-9 before:absolute before:bottom-2 before:left-[0.45rem] before:top-2 before:w-[0.1rem] before:bg-line sm:pl-12"
+      class="relative space-y-8 pl-9 before:absolute before:bottom-2 before:left-[7px] before:top-2 before:w-px before:bg-line sm:pl-12"
       role="list"
     >
       {experience.map((job) => (
         <li class="relative">
           <span
-            class="absolute -left-9 top-6 h-4 w-4 rounded-full bg-accent ring-4 ring-bg sm:-left-12"
+            class="absolute -left-9 top-6 h-[15px] w-[15px] rounded-full bg-accent ring-4 ring-bg sm:-left-12"
             aria-hidden="true"
           ></span>
           <Card variant="details" class="text-left">

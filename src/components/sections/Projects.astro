@@ -16,7 +16,7 @@ const t = useTranslations(lang);
     <SectionHeading id="projects-title" eyebrow={t('projects.eyebrow')} title={t('projects.title')} />
     <ul class="grid grid-cols-1 gap-8 md:grid-cols-2 desk:grid-cols-3" role="list">
       {projects.map((p) => (
-        <Card as="li" variant="color" class="flex h-full flex-col items-center">
+        <Card as="li" variant="color" class="flex h-full flex-col items-center hover:border-line-strong">
           <img
             src={p.image}
             alt=""
