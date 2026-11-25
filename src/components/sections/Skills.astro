@@ -16,7 +16,7 @@ const t = useTranslations(lang);
         <ul class="skill-items" role="list">
           {group.items.map((skill) => {
             const icon = getSkillIcon(skill);
-            return <li tabindex="0" style={`--brand-color:${icon.color};--brand-dark-color:${icon.darkColor}`}>
+            return <li style={`--brand-color:${icon.color};--brand-dark-color:${icon.darkColor}`}>
               <svg class="icon text-fg" viewBox={icon.viewBox} aria-hidden="true" fill="currentColor" set:html={icon.body} />
               <h4>{skill}</h4>
             </li>;
@@ -32,8 +32,8 @@ const t = useTranslations(lang);
   .skill-items { display: flex; flex-wrap: wrap; gap: 2.5rem; justify-content: space-around; }
   .skill-items li { display: flex; gap: 0.5rem; align-items: center; width: 10rem; text-align: left; }
   .skill-items svg { flex-shrink: 0; transition: color 300ms ease; }
-  .skill-items li:hover svg, .skill-items li:focus-visible svg { color: var(--brand-color); }
-  :global(.dark) .skill-items li:hover svg, :global(.dark) .skill-items li:focus-visible svg { color: var(--brand-dark-color); }
+  .skill-items li:hover svg { color: var(--brand-color); }
+  :global(.dark) .skill-items li:hover svg { color: var(--brand-dark-color); }
   .skill-items h4 { overflow-wrap: anywhere; }
   @media (max-width: 600px) { .skill-groups { grid-template-columns: 1fr; gap: 1rem; } .experience-sub-title { font-size: 1.25rem; } .skill-items { gap: 2.5rem 1rem; } }
 </style>
