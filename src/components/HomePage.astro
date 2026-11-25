@@ -7,7 +7,6 @@ import Skills from './sections/Skills.astro';
 import Experience from './sections/Experience.astro';
 import Projects from './sections/Projects.astro';
 import Education from './sections/Education.astro';
-import Blog from './sections/Blog.astro';
 import Contact from './sections/Contact.astro';
 import Footer from './sections/Footer.astro';
 import type { Lang } from '../i18n/ui';
@@ -24,7 +23,6 @@ const { lang } = Astro.props;
   <Experience lang={lang} />
   <Projects lang={lang} />
   <Education lang={lang} />
-  <Blog lang={lang} />
   <Contact lang={lang} />
   <Footer slot="footer" lang={lang} />
 </BaseLayout>

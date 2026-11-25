@@ -11,7 +11,6 @@ export const ui = {
     'nav.experience': 'Experience',
     'nav.projects': 'Projects',
     'nav.education': 'Education',
-    'nav.blog': 'Writing',
     'nav.contact': 'Contact',
     'nav.menu': 'Open menu',
     'nav.closeMenu': 'Close menu',
@@ -61,12 +60,6 @@ export const ui = {
     'education.certifications': 'Certifications',
     'education.credential': 'View credential',
 
-    'blog.title': 'Writing',
-    'blog.subtitle': 'Notes on engineering, tooling and lessons learned.',
-    'blog.readMore': 'Read article',
-    'blog.minRead': 'min read',
-    'blog.viewAll': 'View all articles',
-
     'contact.title': 'Contact',
     'contact.subtitle': "Let's build something together.",
     'contact.copy':
@@ -89,7 +82,6 @@ export const ui = {
     'nav.experience': 'Kinh nghiệm',
     'nav.projects': 'Dự án',
     'nav.education': 'Học vấn',
-    'nav.blog': 'Bài viết',
     'nav.contact': 'Liên hệ',
     'nav.menu': 'Mở menu',
     'nav.closeMenu': 'Đóng menu',
@@ -138,12 +130,6 @@ export const ui = {
     'education.education': 'Học vấn',
     'education.certifications': 'Chứng chỉ',
     'education.credential': 'Xem chứng chỉ',
-
-    'blog.title': 'Bài viết',
-    'blog.subtitle': 'Ghi chép về kỹ thuật, công cụ và bài học kinh nghiệm.',
-    'blog.readMore': 'Đọc bài viết',
-    'blog.minRead': 'phút đọc',
-    'blog.viewAll': 'Xem tất cả bài viết',
 
     'contact.title': 'Liên hệ',
     'contact.subtitle': 'Cùng nhau xây dựng điều gì đó nhé.',

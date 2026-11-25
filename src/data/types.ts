@@ -51,11 +51,3 @@ export interface Certification {
   year: string;
   url?: string;
 }
-
-export interface Post {
-  title: Localized;
-  excerpt: Localized;
-  url: string;
-  date: string; // YYYY-MM-DD
-  readMinutes: number;
-}

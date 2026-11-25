@@ -23,7 +23,6 @@ All content lives in `src/data/` (typed in `types.ts`). Translatable fields use 
 | `experience.ts` | jobs with localized bullets |
 | `projects.ts` | projects (images in `public/projects/`) |
 | `education.ts` | degrees + certifications |
-| `posts.ts` | blog/writing links |
 
 ## i18n
 
@@ -37,7 +36,7 @@ Light by default, dark via `class="dark"` on `<html>`. Choice is stored in `loca
 
 ## Component contract
 
-- `src/components/sections/<Name>.astro` — one file per section (Hero, About, Skills, Experience, Projects, Education, Blog, Contact, Footer). Each takes `{ lang: 'en' | 'vi' }`, renders a `<section id="...">` (matching the navbar anchors) and reads its data from `src/data/`. Section files should only need their own file to change.
+- `src/components/sections/<Name>.astro` — one file per section (Hero, About, Skills, Experience, Projects, Education, Contact, Footer). Each takes `{ lang: 'en' | 'vi' }`, renders a `<section id="...">` (matching the navbar anchors) and reads its data from `src/data/`. Section files should only need their own file to change.
 - `src/components/ui/` — shared primitives: `SectionHeading`, `Button` (`variant`: primary/secondary/ghost, `external`, `download`), `Tag`, `Card` (`as`: div/article/li).
-- `src/lib/format.ts` — `formatMonth`, `formatDate` (locale-aware).
+- `src/lib/format.ts` — `formatMonth` (locale-aware).
 - `Navbar.astro` — sticky nav, theme toggle, EN|VI switcher, mobile menu.

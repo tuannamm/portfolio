@@ -9,11 +9,3 @@ export function formatMonth(ym: string, lang: Lang): string {
     timeZone: 'UTC',
   }).format(new Date(Date.UTC(y, m - 1, 1)));
 }
-
-/** '2025-09-14' -> 'Sep 14, 2025' / '14 thg 9, 2025' */
-export function formatDate(iso: string, lang: Lang): string {
-  return new Intl.DateTimeFormat(lang === 'vi' ? 'vi-VN' : 'en-US', {
-    dateStyle: 'medium',
-    timeZone: 'UTC',
-  }).format(new Date(iso));
-}
