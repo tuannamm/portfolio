@@ -8,7 +8,7 @@ export const ui = {
 
     'nav.about': 'About',
     'nav.skills': 'Skills',
-    'nav.experience': 'Experience',
+    'nav.experience': 'Career',
     'nav.projects': 'Projects',
     'nav.education': 'Education',
     'nav.contact': 'Contact',
@@ -46,8 +46,8 @@ export const ui = {
     'skills.devops': 'DevOps & Cloud',
     'skills.tools': 'Tools',
 
-    'experience.eyebrow': 'Explore My',
-    'experience.title': 'Experience',
+    'experience.eyebrow': 'My Journey',
+    'experience.title': 'Career History',
     'experience.subtitle': 'Where I have worked and what I have shipped.',
     'experience.present': 'Present',
 
@@ -86,7 +86,7 @@ export const ui = {
 
     'nav.about': 'Giới thiệu',
     'nav.skills': 'Kỹ năng',
-    'nav.experience': 'Kinh nghiệm',
+    'nav.experience': 'Sự nghiệp',
     'nav.projects': 'Dự án',
     'nav.education': 'Học vấn',
     'nav.contact': 'Liên hệ',
@@ -124,8 +124,8 @@ export const ui = {
     'skills.devops': 'DevOps & Đám mây',
     'skills.tools': 'Công cụ',
 
-    'experience.eyebrow': 'Khám phá',
-    'experience.title': 'Kinh nghiệm',
+    'experience.eyebrow': 'Hành trình của tôi',
+    'experience.title': 'Lịch sử nghề nghiệp',
     'experience.subtitle': 'Nơi tôi đã làm việc và những gì đã triển khai.',
     'experience.present': 'Hiện tại',
 
