@@ -35,9 +35,9 @@ const facts = [
       <Reveal delay={120} class="lg:col-span-2">
         <dl class="grid grid-cols-2 gap-3 sm:gap-4">
           {facts.map((f) => (
-            <div class="rounded-xl border border-line bg-surface p-4 sm:p-5">
-              <dd class="text-3xl font-bold tracking-tight text-accent">{f.value}</dd>
+            <div class="flex flex-col-reverse justify-end rounded-xl border border-line bg-surface p-4 sm:p-5">
               <dt class="mt-1 text-sm leading-snug text-muted">{f.label}</dt>
+              <dd class="text-3xl font-bold tracking-tight text-accent">{f.value}</dd>
             </div>
           ))}
         </dl>
