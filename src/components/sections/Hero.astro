@@ -2,69 +2,49 @@
 import { useTranslations, type Lang } from '../../i18n/ui';
 import { profile } from '../../data/profile';
 import Button from '../ui/Button.astro';
-import Reveal from '../home/Reveal.astro';
-
 interface Props { lang: Lang }
 const { lang } = Astro.props;
 const t = useTranslations(lang);
-const initials = profile.name.split(' ').map((w) => w[0]).join('').slice(0, 2);
-const iconLink =
-  'inline-flex h-10 w-10 items-center justify-center rounded-lg border border-line text-muted transition-colors hover:bg-surface hover:text-fg';
+const initials = profile.name.split(' ').map((word) => word[0]).join('').slice(0, 2);
+// Set to '/avatar.jpg' after adding your portrait to public/.
+const avatar: string | null = null;
 ---
-
-<section id="hero" class="relative overflow-hidden pb-16 pt-20 sm:pb-24 sm:pt-28" aria-labelledby="hero-title">
-  <!-- decorative: soft grid + accent glow, masked to fade out -->
-  <div aria-hidden="true" class="pointer-events-none absolute inset-0 -z-10">
-    <div
-      class="absolute inset-0 opacity-60"
-      style="background-image:linear-gradient(var(--c-line) 1px,transparent 1px),linear-gradient(90deg,var(--c-line) 1px,transparent 1px);background-size:48px 48px;-webkit-mask-image:radial-gradient(ellipse 70% 60% at 50% 0%,#000 30%,transparent 80%);mask-image:radial-gradient(ellipse 70% 60% at 50% 0%,#000 30%,transparent 80%)"
-    >
+<section id="hero" class="section" aria-labelledby="hero-title">
+  <div class="container-page hero-content">
+    <div class="portrait">
+      {avatar ? <img src={avatar} alt={profile.name} width="400" height="400" /> : <span aria-hidden="true">{initials}</span>}
     </div>
-    <div class="absolute -top-32 left-1/2 h-72 w-[36rem] -translate-x-1/2 rounded-full bg-accent opacity-[0.12] blur-3xl dark:opacity-[0.18]"></div>
-  </div>
-
-  <div class="container-page">
-    <div class="flex flex-col-reverse items-start gap-10 md:flex-row md:items-center md:justify-between">
-      <div class="max-w-2xl">
-        <Reveal>
-          <p class="inline-flex items-center gap-2 rounded-full border border-line bg-surface px-3 py-1 text-xs font-medium text-muted sm:text-sm">
-            <span class="relative flex h-2 w-2" aria-hidden="true">
-              <span class="absolute inline-flex h-full w-full rounded-full bg-emerald-500 opacity-60 motion-safe:animate-ping"></span>
-              <span class="relative inline-flex h-2 w-2 rounded-full bg-emerald-500"></span>
-            </span>
-            {t('hero.available')}
-          </p>
-        </Reveal>
-        <Reveal delay={80}>
-          <p class="mt-6 text-sm font-medium text-accent sm:text-base">{t('hero.greeting')}</p>
-          <h1 id="hero-title" class="mt-1 text-4xl font-bold tracking-tight sm:text-6xl">{profile.name}</h1>
-          <p class="mt-3 text-xl font-medium text-muted sm:text-2xl">{profile.role[lang]}</p>
-        </Reveal>
-        <Reveal delay={160}>
-          <p class="mt-6 max-w-xl text-base leading-relaxed text-muted sm:text-lg">{profile.tagline[lang]}</p>
-        </Reveal>
-        <Reveal delay={240} class="mt-8 flex flex-wrap items-center gap-3">
-          <Button href="#projects">{t('hero.cta.projects')}</Button>
-          <Button href={profile.cvUrl} variant="secondary" download>{t('hero.cta.cv')}</Button>
-          <span class="mx-1 hidden h-6 w-px bg-line sm:block" aria-hidden="true"></span>
-          <a href={profile.socials.github} class={iconLink} target="_blank" rel="noopener noreferrer" aria-label={t('hero.github')}>
+    <div class="hero-text">
+      <p class="eyebrow">{t('hero.greeting')}</p>
+      <h1 id="hero-title" class="title">{profile.name}</h1>
+      <p class="role">{profile.role[lang]}</p>
+      <div class="actions">
+        <Button href={profile.cvUrl} variant="outline" download>{t('hero.cta.cv')}</Button>
+        <Button href="#contact" variant="filled">{t('hero.cta.contact')}</Button>
+      </div>
+      <div class="socials">
+          <a href={profile.socials.github} class="social-link" target="_blank" rel="noopener noreferrer" aria-label={t('hero.github')}>
             <svg viewBox="0 0 24 24" class="h-5 w-5" fill="currentColor" aria-hidden="true"><path d="M12 .5A11.5 11.5 0 0 0 8.36 22.9c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.53-1.33-1.28-1.69-1.28-1.69-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.03 1.76 2.7 1.25 3.35.96.1-.74.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.28 1.18-3.09-.12-.29-.51-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.78 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.18 1.83 1.18 3.09 0 4.42-2.69 5.39-5.25 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5Z"/></svg>
           </a>
-          <a href={profile.socials.linkedin} class={iconLink} target="_blank" rel="noopener noreferrer" aria-label={t('hero.linkedin')}>
+          <a href={profile.socials.linkedin} class="social-link" target="_blank" rel="noopener noreferrer" aria-label={t('hero.linkedin')}>
             <svg viewBox="0 0 24 24" class="h-5 w-5" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13ZM7.12 20.45H3.56V9h3.56v11.45ZM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0Z"/></svg>
           </a>
-        </Reveal>
       </div>
-
-      <Reveal delay={120} class="hidden shrink-0 sm:block">
-        <div
-          class="flex h-28 w-28 items-center justify-center rounded-3xl border border-line bg-accent-soft text-4xl font-bold tracking-tight text-accent shadow-sm sm:h-40 sm:w-40 sm:text-5xl md:h-52 md:w-52 md:text-6xl"
-          role="img"
-          aria-label={profile.name}
-        >
-          {initials}
-        </div>
-      </Reveal>
     </div>
   </div>
 </section>
+<style>
+  #hero { min-height: 80vh; display: flex; align-items: center; }
+  .hero-content { width: 100%; display: flex; align-items: center; justify-content: center; gap: 5rem; padding-block: 2rem; }
+  .portrait { width: 400px; height: 400px; flex-shrink: 0; border-radius: 50%; background: var(--c-surface); border: 0.1rem solid var(--c-line); display: grid; place-items: center; overflow: hidden; }
+  .portrait span { font-size: 6rem; font-weight: 600; color: var(--c-muted); }
+  .portrait img { width: 100%; height: 100%; object-fit: cover; }
+  .hero-text { text-align: center; max-width: 35rem; min-width: 0; }
+  .role { font-size: 1.75rem; font-weight: 600; margin: 0.75rem 0 1rem; }
+  .actions, .socials { display: flex; justify-content: center; flex-wrap: wrap; gap: 1rem; }
+  .socials { margin-top: 1rem; }
+  .social-link { display: inline-flex; width: 2rem; height: 2rem; }
+  .social-link :global(svg) { width: 2rem; height: 2rem; }
+  @media (max-width: 1199px) { .hero-content { flex-direction: column; gap: 2rem; } .portrait { width: 275px; height: 275px; } }
+  @media (max-width: 600px) { .portrait { width: 46vw; height: 46vw; } .portrait span { font-size: 3.5rem; } .role { font-size: 1.25rem; } }
+</style>
