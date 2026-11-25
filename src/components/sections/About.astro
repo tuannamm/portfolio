@@ -1,19 +1,47 @@
 ---
 import { useTranslations, type Lang } from '../../i18n/ui';
 import { profile } from '../../data/profile';
+import { experience } from '../../data/experience';
+import { projects } from '../../data/projects';
+import { certifications } from '../../data/education';
 import SectionHeading from '../ui/SectionHeading.astro';
+import Reveal from '../home/Reveal.astro';
 
 interface Props { lang: Lang }
 const { lang } = Astro.props;
 const t = useTranslations(lang);
+
+const earliest = Math.min(...experience.map((j) => new Date(`${j.start}-01`).getTime()));
+const years = Math.max(1, Math.floor((Date.now() - earliest) / (365.25 * 24 * 3600 * 1000)));
+const facts = [
+  { value: `${years}+`, label: t('about.facts.years') },
+  { value: String(new Set(experience.map((j) => j.company)).size), label: t('about.facts.companies') },
+  { value: String(projects.length), label: t('about.facts.projects') },
+  { value: String(certifications.length), label: t('about.facts.certs') },
+];
 ---
 
 <section id="about" class="section" aria-labelledby="about-title">
   <div class="container-page">
-    <SectionHeading id="about-title" title={t('about.title')} subtitle={t('about.subtitle')} />
-    <div class="max-w-3xl space-y-4 text-lg leading-relaxed text-muted">
-      {profile.about.map((p) => <p>{p[lang]}</p>)}
-      <p class="text-base"><span class="font-medium text-fg">{t('about.location')}:</span> {profile.location[lang]}</p>
+    <Reveal><SectionHeading id="about-title" title={t('about.title')} subtitle={t('about.subtitle')} /></Reveal>
+    <div class="grid gap-10 lg:grid-cols-5 lg:gap-14">
+      <Reveal class="space-y-4 text-base leading-relaxed text-muted sm:text-lg lg:col-span-3">
+        {profile.about.map((p) => <p>{p[lang]}</p>)}
+        <p class="flex items-start gap-2 pt-2 text-base">
+          <svg viewBox="0 0 24 24" class="mt-0.5 h-5 w-5 shrink-0 text-accent" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 21s7-6.2 7-11.5A7 7 0 0 0 5 9.5C5 14.8 12 21 12 21Z" /><circle cx="12" cy="9.5" r="2.5" /></svg>
+          <span><span class="font-medium text-fg">{t('about.location')}:</span> {profile.location[lang]}</span>
+        </p>
+      </Reveal>
+      <Reveal delay={120} class="lg:col-span-2">
+        <dl class="grid grid-cols-2 gap-3 sm:gap-4">
+          {facts.map((f) => (
+            <div class="rounded-xl border border-line bg-surface p-4 sm:p-5">
+              <dd class="text-3xl font-bold tracking-tight text-accent">{f.value}</dd>
+              <dt class="mt-1 text-sm leading-snug text-muted">{f.label}</dt>
+            </div>
+          ))}
+        </dl>
+      </Reveal>
     </div>
   </div>
 </section>

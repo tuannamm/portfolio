@@ -4,24 +4,27 @@ import { skills } from '../../data/skills';
 import SectionHeading from '../ui/SectionHeading.astro';
 import Card from '../ui/Card.astro';
 import Tag from '../ui/Tag.astro';
+import Reveal from '../home/Reveal.astro';
 
 interface Props { lang: Lang }
 const { lang } = Astro.props;
 const t = useTranslations(lang);
 ---
 
-<section id="skills" class="section bg-surface/50" aria-labelledby="skills-title">
+<section id="skills" class="section border-y border-line bg-surface/50" aria-labelledby="skills-title">
   <div class="container-page">
-    <SectionHeading id="skills-title" title={t('skills.title')} subtitle={t('skills.subtitle')} />
-    <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-      {skills.map((g) => (
-        <Card>
-          <h3 class="mb-3 font-semibold">{t(`skills.${g.id}` as UIKey)}</h3>
-          <ul class="flex flex-wrap gap-2">
-            {g.items.map((s) => <li><Tag>{s}</Tag></li>)}
-          </ul>
-        </Card>
+    <Reveal><SectionHeading id="skills-title" title={t('skills.title')} subtitle={t('skills.subtitle')} /></Reveal>
+    <ul class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      {skills.map((g, i) => (
+        <Reveal as="li" delay={(i % 3) * 70} class="h-full">
+          <Card class="h-full bg-bg transition-colors hover:border-accent/50 sm:p-6">
+            <h3 class="mb-4 text-sm font-semibold uppercase tracking-wider text-muted">{t(`skills.${g.id}` as UIKey)}</h3>
+            <ul class="flex flex-wrap gap-2" role="list">
+              {g.items.map((s) => <li><Tag class="px-3 py-1 text-sm">{s}</Tag></li>)}
+            </ul>
+          </Card>
+        </Reveal>
       ))}
-    </div>
+    </ul>
   </div>
 </section>
