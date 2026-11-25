@@ -46,5 +46,6 @@ const initials = profile.name.split(' ').map((word) => word[0]).join('').slice(0
   .facts h3 { font-size: 1.17rem; }
   .about-copy { display: grid; gap: 1rem; line-height: 1.6; }
   @media (max-width: 1199px) { .about-content { flex-direction: column; gap: 2rem; } .about-picture { width: 275px; height: 275px; } }
-  @media (max-width: 600px) { .about-picture { width: 65vw; height: 65vw; font-size: 4rem; } .facts { grid-template-columns: 1fr; gap: 1rem; } }
+  @media (max-width: 599px) { .about-picture { width: 46vw; height: 46vw; font-size: 4rem; } .facts { gap: 1rem; } .facts :global(.details-container) { min-width: 0; overflow-wrap: anywhere; } .about-copy { text-align: justify; } }
+  @media (max-width: 359px) { .facts { grid-template-columns: 1fr; } }
 </style>
