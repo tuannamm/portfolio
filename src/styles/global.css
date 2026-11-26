@@ -47,14 +47,12 @@
   --font-sans: "Poppins", sans-serif;
   --breakpoint-desk: 75rem; /* 1200px: desktop nav / full margins (utilities: desk:, max-desk:) */
   --color-bg: var(--c-bg);
-  --color-surface: var(--c-surface);
   --color-fg: var(--c-fg);
   --color-muted: var(--c-muted);
   --color-line: var(--c-line);
   --color-line-strong: var(--c-line-strong);
   --color-accent: var(--c-accent);
   --color-accent-fg: var(--c-accent-fg);
-  --color-accent-soft: var(--c-accent-soft);
 }
 
 @view-transition {

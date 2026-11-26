@@ -1,7 +1,0 @@
----
-// Plain passthrough wrapper (reveal animation removed; kept so sections don't break).
-interface Props { delay?: number; class?: string; as?: 'div' | 'li' | 'p' | 'span' }
-const { class: className, as: Tag = 'div' } = Astro.props;
----
-
-<Tag class={className}><slot /></Tag>
