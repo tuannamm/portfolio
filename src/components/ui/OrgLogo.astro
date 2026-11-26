@@ -16,7 +16,7 @@ const initials =
     ? `${parts[0][0]}${parts[1][0]}`.toUpperCase()
     : name.slice(0, 2).toUpperCase();
 
-const targetPx = size === 'lg' ? 176 : 144;
+const targetPx = 192;
 const isSvg = logo?.format === 'svg';
 const imgWidth = logo ? Math.min(targetPx, logo.width) : targetPx;
 const imgHeight = logo ? Math.round((imgWidth * logo.height) / logo.width) : targetPx;
@@ -56,18 +56,18 @@ const imgHeight = logo ? Math.round((imgWidth * logo.height) / logo.width) : tar
     overflow: hidden;
   }
   .org-logo-md {
-    width: 3.5rem;
-    height: 3.5rem;
+    width: 4.5rem;
+    height: 4.5rem;
   }
   @media (min-width: 768px) {
     .org-logo-md {
-      width: 4.5rem;
-      height: 4.5rem;
+      width: 6rem;
+      height: 6rem;
     }
   }
   .org-logo-lg {
-    width: 5.5rem;
-    height: 5.5rem;
+    width: 6rem;
+    height: 6rem;
   }
   .org-logo-img {
     background-color: #ffffff;
