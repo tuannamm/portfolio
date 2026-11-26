@@ -1,3 +1,5 @@
+import type { ImageMetadata } from 'astro';
+
 export type Localized = { en: string; vi: string };
 export type Lang = keyof Localized;
 
@@ -21,6 +23,7 @@ export interface SkillGroup {
 
 export interface Job {
   company: string;
+  logo?: ImageMetadata;
   role: Localized;
   location?: Localized;
   start: string; // YYYY-MM
@@ -42,6 +45,7 @@ export interface Project {
 
 export interface Degree {
   school: Localized;
+  logo?: ImageMetadata;
   degree?: Localized;
   start: string; // YYYY
   end: string;

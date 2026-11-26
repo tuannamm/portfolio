@@ -1,3 +1,4 @@
+import aonetekLogo from '../assets/logos/aonetek.jpeg';
 import type { Job } from './types';
 
 export const experience: Job[] = [
@@ -28,6 +29,7 @@ export const experience: Job[] = [
   },
   {
     company: 'AONETEK',
+    logo: aonetekLogo,
     role: { en: 'Software Engineer Intern', vi: 'Thực tập sinh kỹ sư phần mềm' },
     start: '2022-05',
     end: '2023-03',

@@ -1,0 +1,89 @@
+---
+import type { ImageMetadata } from 'astro';
+import { Image } from 'astro:assets';
+
+interface Props {
+  logo?: ImageMetadata;
+  name: string;
+  size?: 'md' | 'lg';
+  class?: string;
+}
+
+const { logo, name, size = 'md', class: className = '' } = Astro.props;
+const parts = name.split(/[\s-]+/).filter(Boolean);
+const initials =
+  parts.length >= 2
+    ? `${parts[0][0]}${parts[1][0]}`.toUpperCase()
+    : name.slice(0, 2).toUpperCase();
+
+const targetPx = size === 'lg' ? 112 : 96;
+const imgWidth = logo ? Math.min(targetPx, logo.width) : targetPx;
+const imgHeight = logo ? Math.round((imgWidth * logo.height) / logo.width) : targetPx;
+---
+
+<span
+  class:list={[
+    'org-logo',
+    size === 'lg' ? 'org-logo-lg' : 'org-logo-md',
+    logo ? 'org-logo-img' : 'org-logo-fallback',
+    className,
+  ]}
+>
+  {logo ? (
+    <Image
+      src={logo}
+      alt={name}
+      width={imgWidth}
+      height={imgHeight}
+      format="webp"
+      quality={90}
+      loading="lazy"
+      decoding="async"
+    />
+  ) : (
+    <span aria-hidden="true">{initials}</span>
+  )}
+</span>
+
+<style>
+  .org-logo {
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+    border-radius: 0.75rem;
+    border: 1px solid var(--c-line);
+    overflow: hidden;
+  }
+  .org-logo-md {
+    width: 2.75rem;
+    height: 2.75rem;
+    padding: 0.375rem;
+  }
+  @media (min-width: 640px) {
+    .org-logo-md {
+      width: 3rem;
+      height: 3rem;
+    }
+  }
+  .org-logo-lg {
+    width: 3.5rem;
+    height: 3.5rem;
+    padding: 0.375rem;
+  }
+  .org-logo-img {
+    background-color: #ffffff;
+  }
+  .org-logo-img :global(img) {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+  .org-logo-fallback {
+    background-color: var(--c-surface);
+    color: var(--c-fg);
+    font-weight: 600;
+    font-size: 0.875rem;
+    letter-spacing: 0.02em;
+    line-height: 1;
+  }
+</style>

@@ -3,6 +3,7 @@ import { useTranslations, type Lang } from '../../i18n/ui';
 import { education, certifications } from '../../data/education';
 import SectionHeading from '../ui/SectionHeading.astro';
 import Card from '../ui/Card.astro';
+import OrgLogo from '../ui/OrgLogo.astro';
 
 interface Props { lang: Lang }
 const { lang } = Astro.props;
@@ -21,7 +22,8 @@ const t = useTranslations(lang);
         <h3 class="mb-4 text-xl font-semibold text-fg">{t('education.education')}</h3>
         <ul class="w-full divide-y divide-line" role="list">
           {education.map((e) => (
-            <li class="py-4 first:pt-0 last:pb-0">
+            <li class="flex flex-col items-center py-4 first:pt-0 last:pb-0">
+              {e.logo && <OrgLogo logo={e.logo} name={e.school[lang]} size="lg" class="mb-3" />}
               <p class="font-semibold text-fg">{e.school[lang]}</p>
               <p class="mt-1 text-sm text-muted">{e.start}–{e.end}</p>
               {e.note && <p class="mt-2 text-sm leading-relaxed text-muted">{e.note[lang]}</p>}
