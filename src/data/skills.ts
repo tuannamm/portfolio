@@ -28,7 +28,6 @@ export interface SkillIcon {
   viewBox: string;
   color: string;
   darkColor: string;
-  source: 'simple-icons' | 'generic';
 }
 
 // Preserve foreground contrast when the official color is too dark against #121212.
@@ -58,11 +57,11 @@ export function getSkillIcon(name: string): SkillIcon {
   const icon = Object.hasOwn(brandIcons, name) ? brandIcons[name] : undefined;
   if (icon) return {
     body: `<path d="${icon.path}"/>`, viewBox: '0 0 24 24',
-    color: `#${icon.hex}`, darkColor: darkBrandColor(icon.hex), source: 'simple-icons',
+    color: `#${icon.hex}`, darkColor: darkBrandColor(icon.hex),
   };
   const paths = Object.hasOwn(conceptPaths, name) ? conceptPaths[name] : unknownPath;
   return {
     body: `<g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">${paths}</g>`,
-    viewBox: '0 0 24 24', color: 'currentColor', darkColor: 'currentColor', source: 'generic',
+    viewBox: '0 0 24 24', color: 'currentColor', darkColor: 'currentColor',
   };
 }

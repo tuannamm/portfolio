@@ -2,12 +2,7 @@ import type { Profile } from './types';
 
 export const profile: Profile = {
   name: { en: 'Nguyen Tran Tuan Nam', vi: 'Nguyễn Trần Tuấn Nam' },
-  initials: 'TN',
   role: { en: 'Backend Software Engineer', vi: 'Kỹ sư phần mềm Backend' },
-  tagline: {
-    en: 'I build backend microservices with Node.js and NestJS — DDD, Clean Architecture and CQRS, event-driven systems on RabbitMQ, deployed on Docker and Kubernetes.',
-    vi: 'Tôi xây dựng các microservice backend với Node.js và NestJS — DDD, Clean Architecture và CQRS, hệ thống hướng sự kiện trên RabbitMQ, triển khai bằng Docker và Kubernetes.',
-  },
   about: [
     {
       en: 'I am a backend engineer at DIGI-TEXX, where I build microservices that serve machine-learning models — detection, OCR and image processing — as REST APIs, using DDD, Clean Architecture and CQRS. I also act as project manager, coordinating AI engineers, backend developers and OPS in a team of 10.',

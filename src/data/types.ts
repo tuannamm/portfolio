@@ -5,9 +5,7 @@ export type Lang = keyof Localized;
 
 export interface Profile {
   name: Localized;
-  initials: string;
   role: Localized;
-  tagline: Localized;
   about: Localized[]; // paragraphs
   location: Localized;
   email: string;
@@ -46,7 +44,6 @@ export interface Project {
 export interface Degree {
   school: Localized;
   logo?: ImageMetadata;
-  degree?: Localized;
   start: string; // YYYY
   end: string;
   note?: Localized;
