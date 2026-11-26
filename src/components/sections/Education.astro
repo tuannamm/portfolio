@@ -15,10 +15,6 @@ const t = useTranslations(lang);
     <SectionHeading id="education-title" eyebrow={t('education.eyebrow')} title={t('education.title')} />
     <div class="grid gap-8 md:grid-cols-2">
       <Card variant="details" class="flex flex-col items-center">
-        <svg viewBox="0 0 24 24" class="icon mb-3 text-fg" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
-          <path d="M6 12v5c0 2 3 3 6 3s6-1 6-3v-5" />
-        </svg>
         <h3 class="mb-4 text-xl font-semibold text-fg">{t('education.education')}</h3>
         <ul class="w-full divide-y divide-line" role="list">
           {education.map((e) => (
