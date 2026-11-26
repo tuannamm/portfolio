@@ -3,10 +3,6 @@ import type { Certification, Degree } from './types';
 export const education: Degree[] = [
   {
     school: { en: 'University of Science', vi: 'Trường Đại học Khoa học Tự nhiên' },
-    degree: {
-      en: 'Bachelor — Faculty of Electronics and Telecommunications',
-      vi: 'Cử nhân — Khoa Điện tử – Viễn thông',
-    },
     start: '2019',
     end: '2023',
     note: { en: 'GPA: 3.50/4.00', vi: 'GPA: 3,50/4,00' },

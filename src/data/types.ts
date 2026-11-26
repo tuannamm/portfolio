@@ -42,7 +42,7 @@ export interface Project {
 
 export interface Degree {
   school: Localized;
-  degree: Localized;
+  degree?: Localized;
   start: string; // YYYY
   end: string;
   note?: Localized;
