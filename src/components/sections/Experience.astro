@@ -33,8 +33,12 @@ const t = useTranslations(lang);
                 <div class="job-meta-details">
                   <p class="font-semibold text-fg">{job.company}</p>
                   <p class="text-sm text-muted">
-                    <time datetime={job.start}>{formatMonth(job.start, lang)}</time> –{' '}
-                    {job.end ? <time datetime={job.end}>{formatMonth(job.end, lang)}</time> : t('experience.present')}
+                    <time class="whitespace-nowrap" datetime={job.start}>{formatMonth(job.start, lang)}</time> –{' '}
+                    {job.end ? (
+                      <time class="whitespace-nowrap" datetime={job.end}>{formatMonth(job.end, lang)}</time>
+                    ) : (
+                      <span class="whitespace-nowrap">{t('experience.present')}</span>
+                    )}
                   </p>
                   {job.location && <p class="text-sm text-muted">{job.location[lang]}</p>}
                 </div>

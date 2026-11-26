@@ -1,9 +1,10 @@
 import type { Lang } from '../data/types';
 
-/** '2023-03' -> 'Mar 2023' / 'Thg 3 2023' */
+/** '2023-03' -> 'Mar 2023' / 'tháng 3 2023' */
 export function formatMonth(ym: string, lang: Lang): string {
   const [y, m] = ym.split('-').map(Number);
-  return new Intl.DateTimeFormat(lang === 'vi' ? 'vi-VN' : 'en-US', {
+  if (lang === 'vi') return `tháng ${m} ${y}`;
+  return new Intl.DateTimeFormat('en-US', {
     month: 'short',
     year: 'numeric',
     timeZone: 'UTC',
