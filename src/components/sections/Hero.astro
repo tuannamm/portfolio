@@ -35,7 +35,7 @@ const avatar: string | null = null;
 <style>
   #hero { min-height: 80vh; display: flex; align-items: center; }
   @media (min-width: 75rem) { #hero { min-height: calc(100vh - 7rem); } }
-  .hero-content { width: 100%; display: flex; align-items: center; justify-content: center; gap: 5rem; padding-block: 2rem; }
+  .hero-content { width: 100%; display: flex; align-items: center; justify-content: center; gap: 4rem; padding-block: 2rem; }
   .portrait { width: 400px; height: 400px; flex-shrink: 0; border-radius: 50%; background: var(--c-surface); border: 1px solid var(--c-line); display: grid; place-items: center; overflow: hidden; }
   .portrait span { font-size: 6rem; font-weight: 600; color: var(--c-muted); }
   .portrait img { width: 100%; height: 100%; object-fit: cover; }
@@ -46,6 +46,8 @@ const avatar: string | null = null;
   .socials { margin-top: 1rem; }
   .social-link { display: inline-flex; width: 2rem; height: 2rem; }
   .social-link :global(svg) { width: 2rem; height: 2rem; }
+  /* Desktop: portrait + text form one centered pair; definite width keeps cqw sizing stable */
+  @media (min-width: 75rem) { .hero-text { flex: 0 1 38rem; max-width: 38rem; width: auto; } }
   @media (max-width: 1199px) { .hero-content { flex-direction: column; gap: 2rem; } .portrait { width: 275px; height: 275px; } }
   @media (max-width: 600px) { .portrait { width: 46vw; height: 46vw; } .portrait span { font-size: 3.5rem; } .role { font-size: 1.25rem; } }
 </style>
