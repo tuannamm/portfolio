@@ -7,11 +7,11 @@ import type { SkillGroup } from './types';
 
 export const skills: SkillGroup[] = [
   { id: 'languages', items: ['TypeScript', 'Go'] },
+  { id: 'database', items: ['MongoDB', 'Redis', 'Elasticsearch'] },
+  { id: 'messaging', items: ['RabbitMQ', 'Kafka'] },
   { id: 'backendFrontend', items: ['Node.js', 'NestJS', 'Express.js', 'REST API', 'gRPC', 'ReactJS'] },
   { id: 'architecture', items: ['Microservices', 'Clean Architecture', 'Domain-Driven Design (DDD)', 'CQRS', 'Event-Driven Architecture'] },
   { id: 'devops', items: ['Docker', 'Kubernetes', 'CI/CD', 'Keycloak', 'OpenTelemetry'] },
-  { id: 'database', items: ['MongoDB', 'Redis', 'Elasticsearch'] },
-  { id: 'messaging', items: ['RabbitMQ', 'Kafka'] },
 ];
 
 // Build-time mapping only: none of the icon packages reach the client.

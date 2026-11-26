@@ -20,8 +20,8 @@ const shortLabels: Record<string, string> = {
         as="article"
         class:list={[
           'skill-card hover:border-line-strong',
-          group.id === 'languages' && 'skill-card-strip',
-          (group.id === 'database' || group.id === 'messaging') && 'skill-card-half',
+          ['languages', 'database', 'messaging'].includes(group.id) && 'skill-card-small',
+          group.id === 'messaging' && 'skill-card-messaging',
         ]}
       >
         <h3 class="skill-group-title">{t(`skills.${group.id}` as UIKey)}</h3>
@@ -50,23 +50,19 @@ const shortLabels: Record<string, string> = {
       grid-template-columns: repeat(2, minmax(0, 1fr));
       align-items: start;
     }
-    .skill-groups > :global(.skill-card-strip) {
+    .skill-groups > :global(.skill-card-messaging) {
       grid-column: 1 / -1;
+      width: calc((100% - 1.5rem) / 2);
     }
   }
-  @media (min-width: 1440px) {
+  @media (min-width: 1200px) {
     .skill-groups {
-      grid-template-columns: repeat(6, minmax(0, 1fr));
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       align-items: stretch;
     }
-    .skill-groups > :global(.skill-card) {
-      grid-column: span 2;
-    }
-    .skill-groups > :global(.skill-card-strip) {
-      grid-column: 1 / -1;
-    }
-    .skill-groups > :global(.skill-card-half) {
-      grid-column: span 3;
+    .skill-groups > :global(.skill-card-messaging) {
+      grid-column: auto;
+      width: auto;
     }
   }
   .skill-groups > :global(.skill-card) {
@@ -90,15 +86,10 @@ const shortLabels: Record<string, string> = {
     grid-template-columns: repeat(auto-fill, minmax(6.25rem, 1fr));
     gap: 1.25rem 0.5rem;
   }
-  @media (min-width: 1440px) {
+  @media (min-width: 1200px) {
     .skill-items {
       grid-template-columns: repeat(3, minmax(0, 1fr));
       column-gap: 0.375rem;
-    }
-    :global(.skill-card-strip) .skill-items,
-    :global(.skill-card-half) .skill-items {
-      grid-template-columns: repeat(auto-fill, minmax(6.25rem, 1fr));
-      column-gap: 0.5rem;
     }
   }
   .skill-items li {
@@ -122,6 +113,33 @@ const shortLabels: Record<string, string> = {
     .skill-items li {
       padding-inline: 0.125rem;
       font-size: 0.75rem;
+    }
+  }
+  .skill-groups > :global(.skill-card-small) { padding: 1.25rem; }
+  :global(.skill-card-small) .skill-group-title { margin-bottom: 0.875rem; }
+  :global(.skill-card-small) .skill-items {
+    grid-template-columns: repeat(auto-fill, minmax(5.5rem, 1fr));
+    column-gap: 0.375rem;
+  }
+  :global(.skill-card-small) .skill-items li {
+    font-size: 0.75rem;
+    padding-inline: 0.125rem;
+  }
+  @media (min-width: 768px) {
+    :global(.skill-card-small) .skill-items { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  }
+  @media (min-width: 1200px) and (max-width: 1439px) {
+    .skill-groups > :global(.skill-card) { padding: 1rem; }
+    .skill-groups > :global(.skill-card-small) { padding: 1.25rem; }
+    .skill-items,
+    :global(.skill-card-small) .skill-items { column-gap: 0; }
+    .skill-items li {
+      padding-inline: 0.0625rem;
+      font-size: 0.833333vw;
+    }
+    :global(.skill-card-small) .skill-items li {
+      padding-inline: 0.125rem;
+      font-size: clamp(0.6875rem, 0.833333vw, 0.75rem);
     }
   }
   .skill-items li:hover {
