@@ -15,7 +15,7 @@ export interface Profile {
 
 export interface SkillGroup {
   /** Maps to ui key `skills.<id>` */
-  id: 'langFrontend' | 'backend' | 'architecture' | 'dataOps';
+  id: 'backend' | 'architecture' | 'devops' | 'langFrontend' | 'database' | 'messaging';
   items: string[];
 }
 

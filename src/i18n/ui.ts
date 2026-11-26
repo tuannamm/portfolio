@@ -42,7 +42,9 @@ export const ui = {
     'skills.langFrontend': 'Languages & Frontend',
     'skills.backend': 'Backend',
     'skills.architecture': 'Architecture & Design',
-    'skills.dataOps': 'Data, Messaging & DevOps',
+    'skills.devops': 'DevOps & Cloud',
+    'skills.database': 'Database',
+    'skills.messaging': 'Message Brokers',
 
     'experience.eyebrow': 'My Journey',
     'experience.title': 'Career History',
@@ -118,7 +120,9 @@ export const ui = {
     'skills.langFrontend': 'Ngôn ngữ & Frontend',
     'skills.backend': 'Backend',
     'skills.architecture': 'Kiến trúc & Thiết kế',
-    'skills.dataOps': 'Dữ liệu, Messaging & DevOps',
+    'skills.devops': 'DevOps & Đám mây',
+    'skills.database': 'Cơ sở dữ liệu',
+    'skills.messaging': 'Message Broker',
 
     'experience.eyebrow': 'Hành trình của tôi',
     'experience.title': 'Lịch sử nghề nghiệp',

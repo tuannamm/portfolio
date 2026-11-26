@@ -41,6 +41,13 @@ const shortLabels: Record<string, string> = {
   @media (min-width: 768px) {
     .skill-groups {
       grid-template-columns: repeat(2, minmax(0, 1fr));
+      align-items: start;
+    }
+  }
+  @media (min-width: 1200px) {
+    .skill-groups {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      align-items: stretch;
     }
   }
   .skill-groups > :global(.skill-card) {
@@ -63,6 +70,12 @@ const shortLabels: Record<string, string> = {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(6.25rem, 1fr));
     gap: 1.25rem 0.5rem;
+  }
+  @media (min-width: 1200px) {
+    .skill-items {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      column-gap: 1.5rem;
+    }
   }
   .skill-items li {
     display: flex;
