@@ -9,8 +9,9 @@
 
 /*
  * Monochrome design tokens (light default + dark inversion).
- * Utilities: bg-bg, bg-surface, text-fg, text-muted, border-line,
- * border-line-strong, bg-accent / text-accent (= primary dark), bg-accent-soft.
+ * Utilities: bg-bg, text-fg, text-muted, border-line, border-line-strong,
+ * bg-accent (= primary dark), text-accent-fg. Surface / soft-accent tones are
+ * used via var(--c-surface) / var(--c-accent-soft) only.
  */
 :root {
   --c-bg: rgb(255, 255, 255);
