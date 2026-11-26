@@ -37,8 +37,8 @@ export const experience: Job[] = [
     end: '2023-03',
     bullets: [
       {
-        en: 'Contributed to microservices for an accounting system, building backend APIs with Express.js and MongoDB.',
-        vi: 'Tham gia phát triển các microservice cho hệ thống kế toán, xây dựng backend API bằng Express.js và MongoDB.',
+        en: 'Built backend APIs for an accounting system with Express.js and MongoDB.',
+        vi: 'Xây dựng backend API cho hệ thống kế toán bằng Express.js và MongoDB.',
       },
       {
         en: 'Developed frontend interfaces with ReactJS and integrated them with backend REST APIs for accounting workflows.',
@@ -49,6 +49,6 @@ export const experience: Job[] = [
         vi: 'Thiết kế schema và truy vấn MongoDB, sửa lỗi, và tuân thủ quy trình code review và Git của nhóm.',
       },
     ],
-    tech: ['ReactJS', 'Express.js', 'MongoDB', 'Microservices'],
+    tech: ['ReactJS', 'Express.js', 'MongoDB'],
   },
 ];

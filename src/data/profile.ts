@@ -9,8 +9,8 @@ export const profile: Profile = {
       vi: 'Tôi là kỹ sư backend tại DIGI-TEXX, nơi tôi xây dựng các microservice phục vụ mô hình học máy — nhận diện, OCR và xử lý ảnh — dưới dạng REST API, áp dụng DDD, Clean Architecture và CQRS. Tôi đồng thời đảm nhận vai trò quản lý dự án, điều phối kỹ sư AI, lập trình viên backend và đội OPS trong một nhóm 10 người.',
     },
     {
-      en: 'I started as a Software Engineer Intern at AONETEK, working on accounting microservices with Express.js, MongoDB and ReactJS. I graduated from the University of Science (GPA 3.50/4.00).',
-      vi: 'Tôi bắt đầu sự nghiệp với vị trí thực tập sinh kỹ sư phần mềm tại AONETEK, tham gia các microservice cho hệ thống kế toán với Express.js, MongoDB và ReactJS. Tôi tốt nghiệp Trường Đại học Khoa học Tự nhiên (GPA 3,50/4,00).',
+      en: 'I started as a Software Engineer Intern at AONETEK, building an accounting system with Express.js, MongoDB and ReactJS. I graduated from the University of Science (GPA 3.50/4.00).',
+      vi: 'Tôi bắt đầu sự nghiệp với vị trí thực tập sinh kỹ sư phần mềm tại AONETEK, xây dựng hệ thống kế toán với Express.js, MongoDB và ReactJS. Tôi tốt nghiệp Trường Đại học Khoa học Tự nhiên (GPA 3,50/4,00).',
     },
   ],
   location: { en: 'Ho Chi Minh City, Vietnam', vi: 'TP. Hồ Chí Minh, Việt Nam' },
