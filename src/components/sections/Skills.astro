@@ -37,4 +37,12 @@ const t = useTranslations(lang);
   :global(.dark) .skill-items li:hover svg { color: var(--brand-dark-color); }
   .skill-items h4 { min-width: min-content; overflow-wrap: normal; word-break: normal; }
   @media (max-width: 600px) { .skill-groups { columns: 1; } .skill-groups > :global(article) { margin-bottom: 1rem; } .experience-sub-title { font-size: 1.25rem; } .skill-items { gap: 2.5rem 1rem; } }
+  @media (max-width: 599px) {
+    .skill-groups > :global(article) { padding: 1rem; }
+    .skill-items { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 0.75rem; row-gap: 1.25rem; }
+    .skill-items li { width: auto; min-width: 0; gap: 0.25rem; }
+    .skill-items svg { width: 1.5rem; height: 1.5rem; }
+    .skill-items h4 { font-size: 0.875rem; }
+  }
+  @media (max-width: 359px) { .skill-items { grid-template-columns: 1fr; } }
 </style>
