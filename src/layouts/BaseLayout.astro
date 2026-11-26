@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
 import SmoothScroll from '../components/SmoothScroll.astro';
+import BackToTop from '../components/BackToTop.astro';
 import { useTranslations, type Lang } from '../i18n/ui';
 import { profile } from '../data/profile';
 
@@ -43,6 +44,7 @@ const t = useTranslations(lang);
       <slot />
     </main>
     <slot name="footer" />
+    <BackToTop lang={lang} />
     <SmoothScroll />
   </body>
 </html>

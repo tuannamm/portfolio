@@ -1,0 +1,151 @@
+---
+import { useTranslations, type Lang } from '../i18n/ui';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<a
+  id="back-to-top"
+  href="#top"
+  aria-label={t('footer.backToTop')}
+  aria-hidden="true"
+  tabindex="-1"
+  data-visible="false"
+  class="back-to-top"
+>
+  <svg
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    aria-hidden="true"
+  >
+    <path d="M12 19V5" />
+    <path d="m6 11 6-6 6 6" />
+  </svg>
+</a>
+
+<noscript>
+  <style>
+    .back-to-top {
+      opacity: 1 !important;
+      visibility: visible !important;
+      pointer-events: auto !important;
+      transform: none !important;
+    }
+  </style>
+</noscript>
+
+<style>
+  .back-to-top {
+    position: fixed;
+    right: max(1.25rem, env(safe-area-inset-right));
+    bottom: max(1.25rem, env(safe-area-inset-bottom));
+    z-index: 40;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 3rem;
+    height: 3rem;
+    border: 0;
+    border-radius: 9999px;
+    background-color: var(--c-accent);
+    color: var(--c-accent-fg);
+    text-decoration: none;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.14);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateY(0.5rem);
+    transition:
+      opacity 200ms ease,
+      transform 200ms ease,
+      visibility 200ms ease,
+      background-color 200ms ease;
+  }
+
+  :global(.dark) .back-to-top {
+    box-shadow: none;
+  }
+
+  .back-to-top[data-visible='true'] {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+
+  .back-to-top:hover {
+    background-color: var(--c-accent-hover);
+    color: var(--c-accent-fg);
+    text-decoration: none;
+  }
+
+  .back-to-top:focus-visible {
+    outline: 2px solid var(--c-fg);
+    outline-offset: 3px;
+    border-radius: 9999px;
+  }
+
+  .back-to-top svg {
+    width: 1.25rem;
+    height: 1.25rem;
+    transition: transform 200ms ease;
+  }
+
+  .back-to-top:hover svg {
+    transform: translateY(-2px);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .back-to-top,
+    .back-to-top svg {
+      transition: none;
+      transform: none;
+    }
+
+    .back-to-top:hover svg {
+      transform: none;
+    }
+  }
+</style>
+
+<script>
+  const btn = document.getElementById('back-to-top');
+  if (btn) {
+    const setVisible = (visible: boolean) => {
+      btn.dataset.visible = visible ? 'true' : 'false';
+      if (visible) {
+        btn.removeAttribute('aria-hidden');
+        btn.removeAttribute('tabindex');
+      } else {
+        if (document.activeElement === btn) btn.blur();
+        btn.setAttribute('aria-hidden', 'true');
+        btn.setAttribute('tabindex', '-1');
+      }
+    };
+
+    const hero = document.getElementById('hero');
+    if (hero && 'IntersectionObserver' in window) {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          const entry = entries[0];
+          if (!entry) return;
+          setVisible(!entry.isIntersecting && entry.boundingClientRect.bottom <= 0);
+        },
+        { threshold: 0 }
+      );
+      observer.observe(hero);
+    } else {
+      const onScroll = () => setVisible(window.scrollY > 600);
+      onScroll();
+      window.addEventListener('scroll', onScroll, { passive: true });
+    }
+  }
+</script>
