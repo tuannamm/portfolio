@@ -28,7 +28,7 @@ const companies = new Set(experience.map((job) => job.company)).size;
           <Card>
             <svg class="icon mx-auto mb-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m2 8 10-5 10 5-10 5L2 8Zm4 2v7c4 3 8 3 12 0v-7M22 8v9"/></svg>
             <h3>{t('education.education')}</h3>
-            {education.map((degree) => <p>{degree.degree[lang]}</p>)}
+            {education.map((degree) => <p>{degree.school[lang]}</p>)}
           </Card>
         </div>
         <div class="about-copy">{profile.about.map((paragraph) => <p>{paragraph[lang]}</p>)}</div>
