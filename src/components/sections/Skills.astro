@@ -11,7 +11,7 @@ const t = useTranslations(lang);
   <div class="container-page">
     <SectionHeading id="skills-title" eyebrow={t('skills.eyebrow')} title={t('skills.title')} />
     <div class="skill-groups">
-      {skills.map((group) => <Card as="article" class:list={['hover:border-line-strong', group.id === 'frontend' && 'skill-group-wide']}>
+      {skills.map((group) => <Card as="article" class="hover:border-line-strong">
         <h3 class="experience-sub-title">{t(`skills.${group.id}` as UIKey)}</h3>
         <ul class="skill-items" role="list">
           {group.items.map((skill) => {
@@ -27,8 +27,8 @@ const t = useTranslations(lang);
   </div>
 </section>
 <style>
-  .skill-groups { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2rem; padding-bottom: 2rem; }
-  .skill-groups :global(.skill-group-wide) { grid-column: 1 / -1; }
+  .skill-groups { columns: 2; column-gap: 2rem; padding-bottom: 2rem; }
+  .skill-groups > :global(article) { break-inside: avoid; margin-bottom: 2rem; }
   .experience-sub-title { color: var(--c-muted); font-weight: 600; font-size: 1.75rem; margin-bottom: 2rem; }
   .skill-items { display: flex; flex-wrap: wrap; gap: 2.5rem; justify-content: space-around; }
   .skill-items li { display: flex; gap: 0.5rem; align-items: center; width: 10rem; text-align: left; }
@@ -36,5 +36,5 @@ const t = useTranslations(lang);
   .skill-items li:hover svg { color: var(--brand-color); }
   :global(.dark) .skill-items li:hover svg { color: var(--brand-dark-color); }
   .skill-items h4 { overflow-wrap: anywhere; }
-  @media (max-width: 600px) { .skill-groups { grid-template-columns: 1fr; gap: 1rem; } .experience-sub-title { font-size: 1.25rem; } .skill-items { gap: 2.5rem 1rem; } }
+  @media (max-width: 600px) { .skill-groups { columns: 1; } .skill-groups > :global(article) { margin-bottom: 1rem; } .experience-sub-title { font-size: 1.25rem; } .skill-items { gap: 2.5rem 1rem; } }
 </style>
