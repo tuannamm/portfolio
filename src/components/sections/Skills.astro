@@ -16,7 +16,14 @@ const shortLabels: Record<string, string> = {
   <div class="container-page">
     <SectionHeading id="skills-title" eyebrow={t('skills.eyebrow')} title={t('skills.title')} />
     <div class="skill-groups">
-      {skills.map((group) => <Card as="article" class="skill-card hover:border-line-strong">
+      {skills.map((group) => <Card
+        as="article"
+        class:list={[
+          'skill-card hover:border-line-strong',
+          group.id === 'languages' && 'skill-card-strip',
+          (group.id === 'database' || group.id === 'messaging') && 'skill-card-half',
+        ]}
+      >
         <h3 class="skill-group-title">{t(`skills.${group.id}` as UIKey)}</h3>
         <ul class="skill-items" role="list">
           {group.items.map((skill) => {
@@ -43,11 +50,23 @@ const shortLabels: Record<string, string> = {
       grid-template-columns: repeat(2, minmax(0, 1fr));
       align-items: start;
     }
+    .skill-groups > :global(.skill-card-strip) {
+      grid-column: 1 / -1;
+    }
   }
   @media (min-width: 1440px) {
     .skill-groups {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-template-columns: repeat(6, minmax(0, 1fr));
       align-items: stretch;
+    }
+    .skill-groups > :global(.skill-card) {
+      grid-column: span 2;
+    }
+    .skill-groups > :global(.skill-card-strip) {
+      grid-column: 1 / -1;
+    }
+    .skill-groups > :global(.skill-card-half) {
+      grid-column: span 3;
     }
   }
   .skill-groups > :global(.skill-card) {
@@ -75,6 +94,11 @@ const shortLabels: Record<string, string> = {
     .skill-items {
       grid-template-columns: repeat(3, minmax(0, 1fr));
       column-gap: 0.375rem;
+    }
+    :global(.skill-card-strip) .skill-items,
+    :global(.skill-card-half) .skill-items {
+      grid-template-columns: repeat(auto-fill, minmax(6.25rem, 1fr));
+      column-gap: 0.5rem;
     }
   }
   .skill-items li {

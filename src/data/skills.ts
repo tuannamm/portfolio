@@ -6,10 +6,10 @@ import {
 import type { SkillGroup } from './types';
 
 export const skills: SkillGroup[] = [
-  { id: 'backend', items: ['Node.js', 'NestJS', 'Express.js', 'REST API', 'gRPC'] },
+  { id: 'languages', items: ['TypeScript', 'Go'] },
+  { id: 'backendFrontend', items: ['Node.js', 'NestJS', 'Express.js', 'REST API', 'gRPC', 'ReactJS'] },
   { id: 'architecture', items: ['Microservices', 'Clean Architecture', 'Domain-Driven Design (DDD)', 'CQRS', 'Event-Driven Architecture'] },
   { id: 'devops', items: ['Docker', 'Kubernetes', 'CI/CD', 'Keycloak', 'OpenTelemetry'] },
-  { id: 'langFrontend', items: ['TypeScript', 'Go', 'ReactJS'] },
   { id: 'database', items: ['MongoDB', 'Redis', 'Elasticsearch'] },
   { id: 'messaging', items: ['RabbitMQ', 'Kafka'] },
 ];
