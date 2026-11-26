@@ -6,6 +6,11 @@ import Card from '../ui/Card.astro';
 interface Props { lang: Lang }
 const { lang } = Astro.props;
 const t = useTranslations(lang);
+// Short display labels for names that would wrap to 3 lines; full name stays in title/aria.
+const shortLabels: Record<string, string> = {
+  'Domain-Driven Design (DDD)': 'DDD',
+  'Event-Driven Architecture': 'Event-Driven',
+};
 ---
 <section id="skills" class="section" aria-labelledby="skills-title">
   <div class="container-page">
@@ -16,9 +21,10 @@ const t = useTranslations(lang);
         <ul class="skill-items" role="list">
           {group.items.map((skill) => {
             const icon = getSkillIcon(skill);
-            return <li style={`--brand-color:${icon.color};--brand-dark-color:${icon.darkColor}`}>
+            const short = shortLabels[skill];
+            return <li title={short ? skill : undefined} style={`--brand-color:${icon.color};--brand-dark-color:${icon.darkColor}`}>
               <svg viewBox={icon.viewBox} aria-hidden="true" fill="currentColor" set:html={icon.body} />
-              <span>{skill}</span>
+              {short ? <><span aria-hidden="true">{short}</span><span class="sr-only">{skill}</span></> : <span>{skill}</span>}
             </li>;
           })}
         </ul>
@@ -51,32 +57,36 @@ const t = useTranslations(lang);
     font-size: 0.8rem;
     letter-spacing: 0.06em;
     text-transform: uppercase;
-    margin-bottom: 1rem;
+    margin-bottom: 1.25rem;
   }
   .skill-items {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(6.25rem, 1fr));
+    gap: 1.25rem 0.5rem;
   }
   .skill-items li {
-    display: inline-flex;
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    gap: 0.4rem;
-    padding: 0.4rem 0.8rem 0.4rem 0.55rem;
-    border: 1px solid var(--c-line);
-    border-radius: 999px;
-    font-size: 0.875rem;
+    gap: 0.5rem;
+    padding: 0.75rem 0.25rem;
+    border-radius: 0.875rem;
+    text-align: center;
+    font-size: 0.8125rem;
     font-weight: 500;
-    white-space: nowrap;
+    line-height: 1.3;
     color: var(--c-fg);
-    transition: border-color 300ms ease;
+    overflow-wrap: normal;
+    word-break: normal;
+    hyphens: none;
+    transition: background-color 300ms ease;
   }
   .skill-items li:hover {
-    border-color: var(--c-line-strong);
+    background-color: var(--c-accent-soft);
   }
   .skill-items svg {
-    width: 1.125rem;
-    height: 1.125rem;
+    width: 2.25rem;
+    height: 2.25rem;
     flex-shrink: 0;
     color: currentColor;
     transition: color 300ms ease;
