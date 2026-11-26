@@ -23,7 +23,7 @@ const t = useTranslations(lang);
           {education.map((e) => (
             <li class="py-4 first:pt-0 last:pb-0">
               <p class="font-semibold text-fg">{e.degree[lang]}</p>
-              <p class="mt-1 text-sm text-muted">{e.school} · {e.start}–{e.end}</p>
+              <p class="mt-1 text-sm text-muted">{e.school[lang]} · {e.start}–{e.end}</p>
               {e.note && <p class="mt-2 text-sm leading-relaxed text-muted">{e.note[lang]}</p>}
             </li>
           ))}
@@ -40,7 +40,7 @@ const t = useTranslations(lang);
           {certifications.map((c) => (
             <li class="py-4 first:pt-0 last:pb-0">
               <p class="font-semibold text-fg">{c.name}</p>
-              <p class="mt-1 text-sm text-muted">{c.issuer} · {c.year}</p>
+              <p class="mt-1 text-sm text-muted">{c.year ? `${c.issuer} · ${c.year}` : c.issuer}</p>
               {c.url && (
                 <a
                   href={c.url}

@@ -30,7 +30,7 @@ const t = useTranslations(lang);
               <div class="min-w-0">
                 <h3 class="text-xl font-semibold text-fg">{job.role[lang]}</h3>
                 <p class="mt-1 font-semibold text-muted">
-                  {job.company} <span class="font-normal">· {job.location[lang]}</span>
+                  {job.company} {job.location && <span class="font-normal">· {job.location[lang]}</span>}
                 </p>
               </div>
               <p class="shrink-0 whitespace-nowrap rounded-full border border-line px-3 py-1 text-sm font-medium text-muted">

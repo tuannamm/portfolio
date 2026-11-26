@@ -7,7 +7,7 @@ interface Props {
   href: string;
   variant?: 'filled' | 'outline' | 'project' | 'primary' | 'secondary' | 'ghost';
   external?: boolean;
-  download?: boolean;
+  download?: boolean | string;
   class?: string;
 }
 const { href, variant = 'filled', external = false, download = false, class: className = '' } = Astro.props;
@@ -20,7 +20,7 @@ const v = variant in map ? map[variant as keyof typeof map] : (variant as 'fille
   class:list={['btn', `btn-${v}`, className]}
   target={external ? '_blank' : undefined}
   rel={external ? 'noopener noreferrer' : undefined}
-  download={download || undefined}
+  download={download === true ? '' : download || undefined}
 >
   <slot />
 </a>

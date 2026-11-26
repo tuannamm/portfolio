@@ -22,7 +22,7 @@ export interface SkillGroup {
 export interface Job {
   company: string;
   role: Localized;
-  location: Localized;
+  location?: Localized;
   start: string; // YYYY-MM
   end: string | null; // null = present
   bullets: Localized[];
@@ -31,7 +31,9 @@ export interface Job {
 
 export interface Project {
   title: string;
+  role?: Localized;
   description: Localized;
+  highlights?: Localized[];
   tech: string[];
   github?: string;
   demo?: string;
@@ -39,7 +41,7 @@ export interface Project {
 }
 
 export interface Degree {
-  school: string;
+  school: Localized;
   degree: Localized;
   start: string; // YYYY
   end: string;
@@ -49,6 +51,6 @@ export interface Degree {
 export interface Certification {
   name: string;
   issuer: string;
-  year: string;
+  year?: string;
   url?: string;
 }

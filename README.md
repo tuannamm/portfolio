@@ -18,7 +18,7 @@ All content lives in `src/data/` (typed in `types.ts`). Translatable fields use 
 
 | File | Content |
 | --- | --- |
-| `profile.ts` | name, role, tagline, about paragraphs, email, socials, `cvUrl` (`/cv.pdf` → replace `public/cv.pdf`) |
+| `profile.ts` | name, role, tagline, about paragraphs, email, socials, `cvUrl` (CV PDF lives in `public/`) |
 | `skills.ts` | grouped skills |
 | `experience.ts` | jobs with localized bullets |
 | `projects.ts` | projects (images in `public/projects/`) |

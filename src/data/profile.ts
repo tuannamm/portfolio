@@ -3,26 +3,26 @@ import type { Profile } from './types';
 export const profile: Profile = {
   name: { en: 'Nguyen Tran Tuan Nam', vi: 'Nguyễn Trần Tuấn Nam' },
   initials: 'TN',
-  role: { en: 'Full-stack Software Engineer', vi: 'Kỹ sư phần mềm Full-stack' },
+  role: { en: 'Backend Software Engineer', vi: 'Kỹ sư phần mềm Backend' },
   tagline: {
-    en: 'I build fast, reliable web products — from polished interfaces to scalable APIs.',
-    vi: 'Tôi xây dựng các sản phẩm web nhanh và ổn định — từ giao diện tinh tế đến API có khả năng mở rộng.',
+    en: 'I build backend microservices with Node.js and NestJS — DDD, Clean Architecture and CQRS, event-driven systems on RabbitMQ, deployed on Docker and Kubernetes.',
+    vi: 'Tôi xây dựng các microservice backend với Node.js và NestJS — DDD, Clean Architecture và CQRS, hệ thống hướng sự kiện trên RabbitMQ, triển khai bằng Docker và Kubernetes.',
   },
   about: [
     {
-      en: 'I am a software engineer with 6+ years of experience shipping web applications used by hundreds of thousands of people. I enjoy the whole stack, but care most about performance, accessibility and clear, maintainable code.',
-      vi: 'Tôi là kỹ sư phần mềm với hơn 6 năm kinh nghiệm phát triển các ứng dụng web phục vụ hàng trăm nghìn người dùng. Tôi làm việc trên toàn bộ stack, nhưng quan tâm nhất đến hiệu năng, khả năng truy cập và mã nguồn rõ ràng, dễ bảo trì.',
+      en: 'I am a backend engineer at DIGI-TEXX, where I build microservices that serve machine-learning models — detection, OCR and image processing — as REST APIs, using DDD, Clean Architecture and CQRS. I also act as project manager, coordinating AI engineers, backend developers and OPS in a team of 10.',
+      vi: 'Tôi là kỹ sư backend tại DIGI-TEXX, nơi tôi xây dựng các microservice phục vụ mô hình học máy — nhận diện, OCR và xử lý ảnh — dưới dạng REST API, áp dụng DDD, Clean Architecture và CQRS. Tôi đồng thời đảm nhận vai trò quản lý dự án, điều phối kỹ sư AI, lập trình viên backend và đội OPS trong một nhóm 10 người.',
     },
     {
-      en: 'Outside of work I write about engineering, contribute to open source and mentor junior developers.',
-      vi: 'Ngoài giờ làm việc, tôi viết về kỹ thuật, đóng góp cho mã nguồn mở và hướng dẫn các lập trình viên mới vào nghề.',
+      en: 'I started as a Software Engineer Intern at AONETEK, working on accounting microservices with Express.js, MongoDB and ReactJS. I hold a Bachelor’s degree from the University of Science (Electronics and Telecommunications, GPA 3.50/4.00).',
+      vi: 'Tôi bắt đầu sự nghiệp với vị trí thực tập sinh kỹ sư phần mềm tại AONETEK, tham gia các microservice cho hệ thống kế toán với Express.js, MongoDB và ReactJS. Tôi tốt nghiệp cử nhân Trường Đại học Khoa học Tự nhiên (Điện tử – Viễn thông, GPA 3,50/4,00).',
     },
   ],
   location: { en: 'Ho Chi Minh City, Vietnam', vi: 'TP. Hồ Chí Minh, Việt Nam' },
-  email: 'hello@example.com',
+  email: 'nttnnam@gmail.com',
   socials: {
-    github: 'https://github.com/example',
-    linkedin: 'https://www.linkedin.com/in/example',
+    github: 'https://github.com/tuannamm',
+    linkedin: 'https://www.linkedin.com/in/nguyentrantuannam',
   },
-  cvUrl: '/cv.pdf',
+  cvUrl: '/NguyenTranTuanNam_Backend_Engineer_CV.pdf',
 };

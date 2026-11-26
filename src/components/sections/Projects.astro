@@ -14,7 +14,7 @@ const t = useTranslations(lang);
 <section id="projects" class="section" aria-labelledby="projects-title">
   <div class="container-page">
     <SectionHeading id="projects-title" eyebrow={t('projects.eyebrow')} title={t('projects.title')} />
-    <ul class="grid grid-cols-1 gap-8 md:grid-cols-2 desk:grid-cols-3" role="list">
+    <ul class="grid grid-cols-1 gap-8 md:grid-cols-2" role="list">
       {projects.map((p) => (
         <Card as="li" variant="color" class="flex h-full flex-col items-center hover:border-line-strong">
           <img
@@ -26,11 +26,18 @@ const t = useTranslations(lang);
             class="mx-auto aspect-video w-[90%] rounded-[2rem] object-cover"
           />
           <h3 class="my-4 text-2xl font-semibold text-fg">{p.title}</h3>
-          <p class="flex-1 text-sm leading-relaxed text-muted">{p.description[lang]}</p>
-          <ul class="mt-4 flex flex-wrap justify-center gap-2" role="list">
+          {p.role && <p class="mb-2 text-sm font-semibold text-muted">{p.role[lang]}</p>}
+          <p class="text-sm leading-relaxed text-muted">{p.description[lang]}</p>
+          {p.highlights && (
+            <ul class="mt-4 w-full list-disc space-y-2 pl-5 text-left text-sm leading-relaxed text-muted">
+              {p.highlights.map((h) => <li>{h[lang]}</li>)}
+            </ul>
+          )}
+          <div class="flex-1"></div>
+          <ul class="mt-5 flex flex-wrap justify-center gap-2" role="list">
             {p.tech.map((x) => <li><Tag>{x}</Tag></li>)}
           </ul>
-          <div class="mt-6 flex flex-wrap justify-center gap-4">
+          <div class="flex flex-wrap justify-center gap-4 empty:hidden [&:not(:empty)]:mt-6">
             {p.github && <Button href={p.github} variant="project" external>{t('projects.source')}</Button>}
             {p.demo && <Button href={p.demo} variant="project" external>{t('projects.demo')}</Button>}
           </div>

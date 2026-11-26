@@ -2,65 +2,49 @@ import type { Job } from './types';
 
 export const experience: Job[] = [
   {
-    company: 'Lumina Commerce',
-    role: { en: 'Senior Software Engineer', vi: 'Kỹ sư phần mềm cao cấp' },
-    location: { en: 'Ho Chi Minh City (Hybrid)', vi: 'TP. Hồ Chí Minh (Hybrid)' },
-    start: '2023-03',
+    company: 'DIGI-TEXX',
+    role: { en: 'Software Engineer – Project Manager', vi: 'Kỹ sư phần mềm – Quản lý dự án' },
+    start: '2023-06',
     end: null,
     bullets: [
       {
-        en: 'Led a checkout rewrite in Next.js that cut p95 page load from 3.8s to 1.2s and lifted conversion by 11%.',
-        vi: 'Dẫn dắt việc viết lại trang thanh toán bằng Next.js, giảm thời gian tải p95 từ 3,8s xuống 1,2s và tăng tỷ lệ chuyển đổi 11%.',
+        en: 'Built backend microservices with Node.js/NestJS to serve ML models (detection, OCR, image processing) as REST APIs, separating services by domain (inference, data management, job orchestration) for independent deployment and scaling.',
+        vi: 'Xây dựng các microservice backend bằng Node.js/NestJS để cung cấp mô hình ML (nhận diện, OCR, xử lý ảnh) dưới dạng REST API, tách dịch vụ theo domain (suy luận, quản lý dữ liệu, điều phối tác vụ) để triển khai và mở rộng độc lập.',
       },
       {
-        en: 'Designed an event-driven order pipeline handling 2M+ events/day with 99.98% uptime.',
-        vi: 'Thiết kế pipeline đơn hàng hướng sự kiện xử lý hơn 2 triệu sự kiện/ngày với uptime 99,98%.',
+        en: 'Applied DDD, Clean Architecture and CQRS; secured services via API Gateway and Keycloak, with Identity/Authorization workers for RBAC.',
+        vi: 'Áp dụng DDD, Clean Architecture và CQRS; bảo mật dịch vụ qua API Gateway và Keycloak, cùng các worker Identity/Authorization cho RBAC.',
       },
       {
-        en: 'Mentored 4 engineers and introduced code-review guidelines that reduced escaped bugs by 30%.',
-        vi: 'Hướng dẫn 4 kỹ sư và xây dựng quy chuẩn code review giúp giảm 30% lỗi lọt ra production.',
+        en: 'Built event-driven communication on RabbitMQ (outbox, retry, sagas); deployed on Docker/Kubernetes with MongoDB, Redis and OpenTelemetry.',
+        vi: 'Xây dựng giao tiếp hướng sự kiện trên RabbitMQ (outbox, retry, saga); triển khai trên Docker/Kubernetes với MongoDB, Redis và OpenTelemetry.',
+      },
+      {
+        en: 'Coordinated AI engineers, backend developers and OPS teams: scoped requirements, planned milestones, tracked progress and reported project status (team of 10).',
+        vi: 'Điều phối giữa kỹ sư AI, lập trình viên backend và đội OPS: xác định phạm vi yêu cầu, lập kế hoạch milestone, theo dõi tiến độ và báo cáo tình hình dự án (nhóm 10 người).',
       },
     ],
-    tech: ['TypeScript', 'Next.js', 'NestJS', 'PostgreSQL', 'AWS'],
+    tech: ['Node.js', 'NestJS', 'RabbitMQ', 'Keycloak', 'MongoDB', 'Redis', 'Docker', 'Kubernetes', 'OpenTelemetry'],
   },
   {
-    company: 'Northwind Labs',
-    role: { en: 'Software Engineer', vi: 'Kỹ sư phần mềm' },
-    location: { en: 'Remote', vi: 'Từ xa' },
-    start: '2020-06',
-    end: '2023-02',
+    company: 'AONETEK',
+    role: { en: 'Software Engineer Intern', vi: 'Thực tập sinh kỹ sư phần mềm' },
+    start: '2022-05',
+    end: '2023-03',
     bullets: [
       {
-        en: 'Built a real-time analytics dashboard used by 40k+ monthly users, reducing report generation time by 70%.',
-        vi: 'Xây dựng dashboard phân tích thời gian thực với hơn 40.000 người dùng mỗi tháng, giảm 70% thời gian tạo báo cáo.',
+        en: 'Contributed to microservices for an accounting system, building backend APIs with Express.js and MongoDB.',
+        vi: 'Tham gia phát triển các microservice cho hệ thống kế toán, xây dựng backend API bằng Express.js và MongoDB.',
       },
       {
-        en: 'Migrated a monolith to 6 services on Kubernetes, cutting infrastructure cost by 25%.',
-        vi: 'Chuyển đổi hệ thống monolith sang 6 dịch vụ trên Kubernetes, giảm 25% chi phí hạ tầng.',
+        en: 'Developed frontend interfaces with ReactJS and integrated them with backend REST APIs for accounting workflows.',
+        vi: 'Phát triển giao diện frontend bằng ReactJS và tích hợp với REST API backend cho các quy trình kế toán.',
       },
       {
-        en: 'Raised test coverage from 35% to 85% and cut deploy time from 40 to 8 minutes with CI/CD.',
-        vi: 'Nâng độ phủ kiểm thử từ 35% lên 85% và rút ngắn thời gian triển khai từ 40 xuống 8 phút nhờ CI/CD.',
+        en: 'Designed MongoDB schemas and queries, fixed bugs, and followed team code review and Git workflows.',
+        vi: 'Thiết kế schema và truy vấn MongoDB, sửa lỗi, và tuân thủ quy trình code review và Git của nhóm.',
       },
     ],
-    tech: ['React', 'Node.js', 'Kubernetes', 'Redis', 'GitHub Actions'],
-  },
-  {
-    company: 'Brightside Studio',
-    role: { en: 'Junior Web Developer', vi: 'Lập trình viên web' },
-    location: { en: 'Da Nang', vi: 'Đà Nẵng' },
-    start: '2018-08',
-    end: '2020-05',
-    bullets: [
-      {
-        en: 'Delivered 15+ client websites, improving average Lighthouse performance score from 62 to 94.',
-        vi: 'Hoàn thành hơn 15 website cho khách hàng, nâng điểm Lighthouse hiệu năng trung bình từ 62 lên 94.',
-      },
-      {
-        en: 'Built a reusable component library that shortened new project setup from 2 weeks to 3 days.',
-        vi: 'Xây dựng thư viện component tái sử dụng, rút ngắn thời gian khởi tạo dự án từ 2 tuần xuống 3 ngày.',
-      },
-    ],
-    tech: ['JavaScript', 'Vue', 'PHP', 'MySQL'],
+    tech: ['ReactJS', 'Express.js', 'MongoDB', 'Microservices'],
   },
 ];

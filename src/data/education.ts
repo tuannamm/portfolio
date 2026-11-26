@@ -2,19 +2,17 @@ import type { Certification, Degree } from './types';
 
 export const education: Degree[] = [
   {
-    school: 'Ho Chi Minh City University of Technology',
+    school: { en: 'University of Science', vi: 'Trường Đại học Khoa học Tự nhiên' },
     degree: {
-      en: 'B.Eng. in Computer Science',
-      vi: 'Cử nhân Kỹ thuật Khoa học Máy tính',
+      en: 'Bachelor — Faculty of Electronics and Telecommunications',
+      vi: 'Cử nhân — Khoa Điện tử – Viễn thông',
     },
-    start: '2014',
-    end: '2018',
-    note: { en: 'Graduated with Honors, GPA 3.6/4.0', vi: 'Tốt nghiệp loại Giỏi, GPA 3,6/4,0' },
+    start: '2019',
+    end: '2023',
+    note: { en: 'GPA: 3.50/4.00', vi: 'GPA: 3,50/4,00' },
   },
 ];
 
 export const certifications: Certification[] = [
-  { name: 'AWS Certified Solutions Architect – Associate', issuer: 'Amazon Web Services', year: '2023', url: 'https://example.com/aws' },
-  { name: 'Certified Kubernetes Application Developer', issuer: 'CNCF', year: '2022', url: 'https://example.com/ckad' },
-  { name: 'Professional Scrum Master I', issuer: 'Scrum.org', year: '2021' },
+  { name: 'TOEIC — Listening & Reading 800 · Speaking & Writing 250', issuer: 'ETS' },
 ];
