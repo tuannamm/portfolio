@@ -1,31 +1,25 @@
 import {
-  siTypescript, siJavascript, siPython, siGo, siReact, siNextdotjs,
-  siAstro, siTailwindcss, siVuedotjs, siNodedotjs, siNestjs, siFastapi,
-  siGraphql, siPostgresql, siMongodb, siRedis, siElasticsearch, siDocker,
-  siKubernetes, siTerraform, siGithubactions, siGit, siFigma, siJest, siLinux,
+  siTypescript, siReact, siNodedotjs, siNestjs, siExpress, siMongodb,
+  siRedis, siRabbitmq, siDocker, siKubernetes, siKeycloak, siOpentelemetry,
   type SimpleIcon,
 } from 'simple-icons';
 import devicon from '@iconify-json/devicon/icons.json';
 import type { SkillGroup } from './types';
 
 export const skills: SkillGroup[] = [
-  { id: 'languages', items: ['TypeScript', 'JavaScript', 'Python', 'Go', 'SQL'] },
-  { id: 'frontend', items: ['React', 'Next.js', 'Astro', 'Tailwind CSS', 'Vue'] },
-  { id: 'backend', items: ['Node.js', 'NestJS', 'FastAPI', 'GraphQL', 'REST'] },
-  { id: 'database', items: ['PostgreSQL', 'MongoDB', 'Redis', 'Elasticsearch'] },
-  { id: 'devops', items: ['AWS', 'Docker', 'Kubernetes', 'Terraform', 'GitHub Actions'] },
-  { id: 'tools', items: ['Git', 'Figma', 'Jest', 'Playwright', 'Linux'] },
+  { id: 'backend', items: ['Node.js', 'NestJS', 'Express.js', 'REST API', 'gRPC'] },
+  { id: 'architecture', items: ['Microservices', 'Clean Architecture', 'Domain-Driven Design (DDD)', 'CQRS', 'Event-Driven (RabbitMQ)'] },
+  { id: 'database', items: ['MongoDB', 'Redis', 'RabbitMQ'] },
+  { id: 'devops', items: ['Docker', 'Kubernetes', 'CI/CD', 'Keycloak', 'OpenTelemetry'] },
+  { id: 'frontend', items: ['ReactJS', 'TypeScript'] },
 ];
 
-// This mapping is consumed in Astro frontmatter only; no icon library reaches the client.
+// Build-time mapping only: none of the icon packages reach the client.
 const brandIcons: Record<string, SimpleIcon> = {
-  TypeScript: siTypescript, JavaScript: siJavascript, Python: siPython, Go: siGo,
-  React: siReact, 'Next.js': siNextdotjs, Astro: siAstro, 'Tailwind CSS': siTailwindcss,
-  Vue: siVuedotjs, 'Node.js': siNodedotjs, NestJS: siNestjs, FastAPI: siFastapi,
-  GraphQL: siGraphql, PostgreSQL: siPostgresql, MongoDB: siMongodb, Redis: siRedis,
-  Elasticsearch: siElasticsearch, Docker: siDocker, Kubernetes: siKubernetes,
-  Terraform: siTerraform, 'GitHub Actions': siGithubactions, Git: siGit,
-  Figma: siFigma, Jest: siJest, Linux: siLinux,
+  'Node.js': siNodedotjs, NestJS: siNestjs, 'Express.js': siExpress,
+  MongoDB: siMongodb, Redis: siRedis, RabbitMQ: siRabbitmq,
+  ReactJS: siReact, TypeScript: siTypescript, Docker: siDocker,
+  Kubernetes: siKubernetes, Keycloak: siKeycloak, OpenTelemetry: siOpentelemetry,
 };
 
 export interface SkillIcon {
@@ -46,10 +40,17 @@ function darkBrandColor(hex: string): string {
   return (luminance + 0.05) / (0.00605 + 0.05) < 3 ? 'currentColor' : `#${hex}`;
 }
 
-const genericBodies = {
-  database: '<ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 8v5c0 4 16 4 16 0V8c-4 3-12 3-16 0Zm0 9v2c0 4 16 4 16 0v-2c-4 3-12 3-16 0Z"/>',
-  api: '<path d="m8 5-7 7 7 7 2-2-5-5 5-5-2-2Zm8 0-2 2 5 5-5 5 2 2 7-7-7-7Zm-3-3-4 20h3l4-20h-3Z"/>',
+// Concepts have no brand logo; each gets its own neutral diagram.
+const conceptPaths: Record<string, string> = {
+  'REST API': '<path d="m8 6-6 6 6 6m8-12 6 6-6 6M14 3l-4 18"/>',
+  Microservices: '<rect x="2" y="2" width="6" height="6" rx="1"/><rect x="16" y="2" width="6" height="6" rx="1"/><rect x="9" y="16" width="6" height="6" rx="1"/><path d="M8 5h8M5 8v4h14V8m-7 4v4"/>',
+  'Clean Architecture': '<circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/>',
+  'Domain-Driven Design (DDD)': '<path d="m12 2 9 5v10l-9 5-9-5V7Zm0 0v6m9-1-5 3m5 7-5-3m-4 8v-6m-9 1 5-3M3 7l5 3m4-3 4 2v6l-4 2-4-2V9Z"/>',
+  CQRS: '<path d="M2 12h6m0 0 6-7h8M8 12l6 7h8M19 2l3 3-3 3m0 8 3 3-3 3"/>',
+  'Event-Driven (RabbitMQ)': '<circle cx="5" cy="12" r="3"/><path d="M11 7a7 7 0 0 1 0 10m3-13a11 11 0 0 1 0 16m3-19a15 15 0 0 1 0 22"/>',
+  'CI/CD': '<path d="M5 7h14v10H5Zm3-3L5 7l3 3m8 4 3 3-3 3"/><circle cx="5" cy="17" r="2"/><circle cx="19" cy="7" r="2"/>',
 };
+const unknownPath = '<path d="m12 2 10 10-10 10L2 12Z"/><circle cx="12" cy="12" r="2"/>';
 
 export function getSkillIcon(name: string): SkillIcon {
   const icon = Object.hasOwn(brandIcons, name) ? brandIcons[name] : undefined;
@@ -57,17 +58,18 @@ export function getSkillIcon(name: string): SkillIcon {
     body: `<path d="${icon.path}"/>`, viewBox: '0 0 24 24',
     color: `#${icon.hex}`, darkColor: darkBrandColor(icon.hex), source: 'simple-icons',
   };
-  if (name === 'AWS' || name === 'Playwright') {
-    const fallback = devicon.icons[name === 'AWS' ? 'amazonwebservices' : 'playwright'];
-    const hex = name === 'AWS' ? 'FF9900' : '2EAD33';
+  if (name === 'gRPC') {
+    // Devicon (MIT) fallback: discard gradients and normalize every path to monochrome.
+    const body = devicon.icons.grpc.body.replace(/<defs>[\s\S]*?<\/defs>/g, '')
+      .replace(/fill="[^"]*"/g, 'fill="currentColor"');
     return {
-      body: fallback.body.replace(/fill="[^"]*"/g, 'fill="currentColor"'),
-      viewBox: `0 0 ${devicon.width} ${devicon.height}`, color: `#${hex}`,
-      darkColor: darkBrandColor(hex), source: 'devicon',
+      body, viewBox: `0 0 ${devicon.width} ${devicon.height}`,
+      color: '#00B5B2', darkColor: darkBrandColor('00B5B2'), source: 'devicon',
     };
   }
+  const paths = Object.hasOwn(conceptPaths, name) ? conceptPaths[name] : unknownPath;
   return {
-    body: name === 'REST' ? genericBodies.api : genericBodies.database,
+    body: `<g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">${paths}</g>`,
     viewBox: '0 0 24 24', color: 'currentColor', darkColor: 'currentColor', source: 'generic',
   };
 }
