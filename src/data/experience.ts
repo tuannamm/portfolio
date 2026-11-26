@@ -1,9 +1,11 @@
+import digiTexxLogo from '../assets/logos/digi-texx.svg';
 import aonetekLogo from '../assets/logos/aonetek.jpeg';
 import type { Job } from './types';
 
 export const experience: Job[] = [
   {
     company: 'DIGI-TEXX',
+    logo: digiTexxLogo,
     role: { en: 'Software Engineer – Project Manager', vi: 'Kỹ sư phần mềm – Quản lý dự án' },
     start: '2023-06',
     end: null,

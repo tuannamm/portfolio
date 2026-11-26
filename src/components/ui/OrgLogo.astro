@@ -17,6 +17,7 @@ const initials =
     : name.slice(0, 2).toUpperCase();
 
 const targetPx = size === 'lg' ? 112 : 96;
+const isSvg = logo?.format === 'svg';
 const imgWidth = logo ? Math.min(targetPx, logo.width) : targetPx;
 const imgHeight = logo ? Math.round((imgWidth * logo.height) / logo.width) : targetPx;
 ---
@@ -35,8 +36,8 @@ const imgHeight = logo ? Math.round((imgWidth * logo.height) / logo.width) : tar
       alt={name}
       width={imgWidth}
       height={imgHeight}
-      format="webp"
-      quality={90}
+      format={isSvg ? 'svg' : 'webp'}
+      quality={isSvg ? undefined : 90}
       loading="lazy"
       decoding="async"
     />
