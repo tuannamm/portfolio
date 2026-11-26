@@ -26,7 +26,7 @@ export const projects: Project[] = [
         vi: 'Thông báo thời gian thực với Centrifugo, truy vết với OpenTelemetry, triển khai trên Kubernetes.',
       },
     ],
-    tech: ['Microservices', 'NestJS', 'DDD', 'RabbitMQ', 'Kubernetes'],
+    tech: ['Microservices', 'NestJS', 'DDD', 'RabbitMQ', 'Kubernetes', 'Keycloak', 'OpenTelemetry'],
     image: '/projects/digi-tracker.svg',
   },
   {
