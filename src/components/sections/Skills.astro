@@ -45,4 +45,11 @@ const t = useTranslations(lang);
     .skill-items h4 { font-size: 0.875rem; }
   }
   @media (max-width: 359px) { .skill-items { grid-template-columns: 1fr; } }
+  @media (min-width: 600px) and (max-width: 1199px) {
+    .skill-groups { columns: 1; }
+    .skill-items { display: grid; grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr)); column-gap: 0.75rem; row-gap: 1.25rem; }
+    .skill-items li { width: auto; min-width: 0; }
+    .skill-items svg { width: 1.5rem; height: 1.5rem; }
+    .skill-items h4 { font-size: 0.9rem; }
+  }
 </style>
