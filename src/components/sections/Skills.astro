@@ -31,10 +31,10 @@ const t = useTranslations(lang);
   .skill-groups > :global(article) { break-inside: avoid; margin-bottom: 2rem; }
   .experience-sub-title { color: var(--c-muted); font-weight: 600; font-size: 1.75rem; margin-bottom: 2rem; }
   .skill-items { display: flex; flex-wrap: wrap; gap: 2.5rem; justify-content: space-around; }
-  .skill-items li { display: flex; gap: 0.5rem; align-items: center; width: 10rem; text-align: left; }
+  .skill-items li { display: flex; gap: 0.5rem; align-items: center; width: 12rem; min-width: min-content; flex-shrink: 0; text-align: left; }
   .skill-items svg { flex-shrink: 0; transition: color 300ms ease; }
   .skill-items li:hover svg { color: var(--brand-color); }
   :global(.dark) .skill-items li:hover svg { color: var(--brand-dark-color); }
-  .skill-items h4 { overflow-wrap: anywhere; }
+  .skill-items h4 { min-width: min-content; overflow-wrap: normal; word-break: normal; }
   @media (max-width: 600px) { .skill-groups { columns: 1; } .skill-groups > :global(article) { margin-bottom: 1rem; } .experience-sub-title { font-size: 1.25rem; } .skill-items { gap: 2.5rem 1rem; } }
 </style>
